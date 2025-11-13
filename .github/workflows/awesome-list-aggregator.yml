@@ -1,0 +1,102 @@
+name: Awesome List Aggregator
+
+on:
+  schedule:
+    # Run weekly on Sundays at 10:00 UTC
+    - cron: '0 10 * * 0'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  aggregate-resources:
+    name: Find and Aggregate New Resources
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install feedparser==6.* beautifulsoup4==4.* requests==2.* PyGithub==2.*
+
+      - name: Run resource aggregator
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPOSITORY: ${{ github.repository }}
+          # Optional: Add API keys for LLM services
+          # OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          # GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python scripts/find_new_articles.py
+
+      - name: Check for new resources
+        id: check_resources
+        run: |
+          if [ -f /tmp/new_resources.json ]; then
+            echo "has_resources=true" >> $GITHUB_OUTPUT
+            echo "✅ New resources found"
+          else
+            echo "has_resources=false" >> $GITHUB_OUTPUT
+            echo "ℹ️  No new resources found"
+          fi
+
+      - name: Create Pull Request
+        if: steps.check_resources.outputs.has_resources == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Add new curated resources to awesome list"
+          title: "🤖 Automated: New Resources for Awesome List"
+          body: |
+            ## 🤖 Automated Resource Curation
+            
+            This PR adds newly discovered resources to our awesome list.
+            
+            ### What's Included
+            
+            - Automatically discovered articles and blog posts
+            - AI-generated summaries for quick review
+            - Only resources from trusted sources
+            
+            ### Review Checklist
+            
+            - [ ] Verify all links are working
+            - [ ] Check that summaries are accurate
+            - [ ] Ensure content is relevant to Delta Lake/Iceberg
+            - [ ] Remove any low-quality or duplicate entries
+            
+            ### How This Works
+            
+            Our AI-powered aggregator:
+            1. Scans trusted RSS feeds and websites
+            2. Filters for Delta Lake and Iceberg content
+            3. Generates concise summaries using AI
+            4. Creates this PR for community review
+            
+            ---
+            
+            *This PR was automatically created by the Awesome List Aggregator workflow.*
+          branch: automated/awesome-list-update
+          delete-branch: true
+          labels: |
+            automated
+            documentation
+            awesome-list
+
+      - name: Summary
+        run: |
+          if [ "${{ steps.check_resources.outputs.has_resources }}" == "true" ]; then
+            echo "✅ New resources aggregated and PR created"
+          else
+            echo "ℹ️  No new resources to aggregate"
+          fi

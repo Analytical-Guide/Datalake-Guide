@@ -1,0 +1,230 @@
+name: Documentation CI
+
+on:
+  pull_request:
+    paths:
+      - '**.md'
+      - '.github/workflows/ci-docs.yml'
+  workflow_dispatch:
+
+jobs:
+  lint-markdown:
+    name: Lint Markdown Files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get changed markdown files
+        id: changed-files
+        run: |
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            CHANGED_MD=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep '\.md$' || true)
+          else
+            CHANGED_MD=$(find . -name "*.md" -not -path "./node_modules/*" -not -path "./.git/*")
+          fi
+          
+          if [ -z "$CHANGED_MD" ]; then
+            echo "has-changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "has-changes=true" >> $GITHUB_OUTPUT
+            echo "Changed markdown files:"
+            echo "$CHANGED_MD"
+          fi
+
+      - name: Run markdownlint
+        if: steps.changed-files.outputs.has-changes == 'true'
+        uses: DavidAnson/markdownlint-cli2-action@v15
+        with:
+          globs: |
+            **/*.md
+            !node_modules
+            !.git
+
+  check-links:
+    name: Check Broken Links
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get changed markdown files
+        id: changed-files
+        run: |
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            CHANGED_MD=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep '\.md$' || true)
+          else
+            CHANGED_MD=$(find . -name "*.md" -not -path "./node_modules/*" -not -path "./.git/*")
+          fi
+          
+          if [ -z "$CHANGED_MD" ]; then
+            echo "has-changes=false" >> $GITHUB_OUTPUT
+            echo "files=" >> $GITHUB_OUTPUT
+          else
+            echo "has-changes=true" >> $GITHUB_OUTPUT
+            # Convert to space-separated list for lychee
+            FILES=$(echo "$CHANGED_MD" | tr '\n' ' ')
+            echo "files=$FILES" >> $GITHUB_OUTPUT
+            echo "Files to check: $FILES"
+          fi
+
+      - name: Link Checker
+        if: steps.changed-files.outputs.has-changes == 'true'
+        uses: lycheeverse/lychee-action@v1
+        with:
+          # Check all markdown files
+          args: --verbose --no-progress --exclude-mail '**/*.md'
+          # Don't fail the workflow on broken links, just report them
+          fail: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create Issue on Broken Links
+        if: failure() && steps.changed-files.outputs.has-changes == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '🔗 Broken links detected in documentation',
+              body: `Broken links were detected in PR #${{ github.event.pull_request.number }}
+              
+              Please review and fix the broken links before merging.
+              
+              **Files checked:**
+              ${{ steps.changed-files.outputs.files }}
+              
+              See the [workflow run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details.`,
+              labels: ['documentation', 'broken-links']
+            });
+            console.log('Created issue:', issue.data.number);
+
+  validate-mermaid:
+    name: Validate Mermaid Diagrams
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Find Mermaid diagrams
+        id: find-diagrams
+        run: |
+          # Find all markdown files with mermaid diagrams
+          MERMAID_FILES=$(grep -rl '```mermaid' --include="*.md" . || true)
+          
+          if [ -z "$MERMAID_FILES" ]; then
+            echo "has-diagrams=false" >> $GITHUB_OUTPUT
+            echo "ℹ️  No Mermaid diagrams found"
+          else
+            echo "has-diagrams=true" >> $GITHUB_OUTPUT
+            echo "Found Mermaid diagrams in:"
+            echo "$MERMAID_FILES"
+          fi
+
+      - name: Set up Node.js
+        if: steps.find-diagrams.outputs.has-diagrams == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Mermaid CLI
+        if: steps.find-diagrams.outputs.has-diagrams == 'true'
+        run: |
+          npm install -g @mermaid-js/mermaid-cli
+
+      - name: Extract and validate diagrams
+        if: steps.find-diagrams.outputs.has-diagrams == 'true'
+        run: |
+          # Create temporary directory for diagram validation
+          mkdir -p /tmp/mermaid-validation
+          
+          # Find all mermaid code blocks and validate them
+          find . -name "*.md" -not -path "./node_modules/*" -not -path "./.git/*" | while read -r file; do
+            echo "Checking $file..."
+            
+            # Extract mermaid blocks (simple extraction)
+            awk '/```mermaid/,/```/' "$file" | grep -v '```' > /tmp/current_diagram.mmd 2>/dev/null || continue
+            
+            if [ -s /tmp/current_diagram.mmd ]; then
+              echo "  Found diagram in $file, validating..."
+              # Try to render the diagram to validate syntax
+              mmdc -i /tmp/current_diagram.mmd -o /tmp/mermaid-validation/test.png 2>&1 || {
+                echo "❌ Invalid Mermaid diagram in $file"
+                cat /tmp/current_diagram.mmd
+                exit 1
+              }
+              echo "  ✅ Diagram is valid"
+            fi
+            
+            rm -f /tmp/current_diagram.mmd
+          done
+          
+          echo "✅ All Mermaid diagrams are valid"
+
+  check-spelling:
+    name: Check Spelling
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check spelling
+        uses: crate-ci/typos@master
+        with:
+          config: ./.typos.toml
+        continue-on-error: true
+
+  validate-frontmatter:
+    name: Validate Markdown Frontmatter
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check for consistent frontmatter
+        run: |
+          # Check if markdown files in docs/ have consistent structure
+          echo "Checking markdown frontmatter consistency..."
+          
+          # This is a placeholder for more sophisticated frontmatter validation
+          # You could add checks for required fields, date formats, etc.
+          
+          find docs -name "*.md" | while read -r file; do
+            # Check if file has reasonable length
+            if [ ! -s "$file" ]; then
+              echo "⚠️  Empty file: $file"
+            fi
+          done
+          
+          echo "✅ Frontmatter check complete"
+
+  docs-validation-success:
+    name: All Documentation Checks Passed
+    runs-on: ubuntu-latest
+    needs: [lint-markdown, check-links, validate-mermaid, validate-frontmatter]
+    if: always()
+    steps:
+      - name: Check results
+        run: |
+          if [ "${{ needs.lint-markdown.result }}" == "failure" ]; then
+            echo "❌ Markdown linting failed"
+            exit 1
+          fi
+          
+          if [ "${{ needs.check-links.result }}" == "failure" ]; then
+            echo "❌ Link checking failed"
+            exit 1
+          fi
+          
+          if [ "${{ needs.validate-mermaid.result }}" == "failure" ]; then
+            echo "❌ Mermaid diagram validation failed"
+            exit 1
+          fi
+          
+          if [ "${{ needs.validate-frontmatter.result }}" == "failure" ]; then
+            echo "❌ Frontmatter validation failed"
+            exit 1
+          fi
+          
+          echo "✅ All documentation checks passed!"
