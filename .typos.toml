@@ -1,0 +1,23 @@
+[default]
+extend-ignore-re = [
+  # Ignore URLs
+  "https?://\\S+",
+  # Ignore email addresses
+  "\\S+@\\S+\\.\\S+",
+]
+
+[default.extend-words]
+# Technical terms that might be flagged as typos
+iceberg = "iceberg"
+lakehouse = "lakehouse"
+databricks = "databricks"
+
+[files]
+extend-exclude = [
+  "*.json",
+  "*.log",
+  "*.pyc",
+  "**/.git/",
+  "**/node_modules/",
+  "**/__pycache__/",
+]

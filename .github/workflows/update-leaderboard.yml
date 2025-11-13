@@ -1,0 +1,58 @@
+name: Update Leaderboard
+
+on:
+  schedule:
+    # Run daily at 12:00 UTC
+    - cron: '0 12 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-leaderboard:
+    name: Generate and Update Leaderboard
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Generate leaderboard
+        run: |
+          python scripts/generate_leaderboard.py
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          if git diff --quiet README.md; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "ℹ️  No leaderboard changes to commit"
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "✅ Leaderboard updated"
+          fi
+
+      - name: Commit and push leaderboard
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add README.md
+          git commit -m "Update community leaderboard [skip ci]"
+          git push
+
+      - name: Summary
+        run: |
+          if [ "${{ steps.check_changes.outputs.has_changes }}" == "true" ]; then
+            echo "✅ Leaderboard updated and pushed to repository"
+          else
+            echo "ℹ️  Leaderboard unchanged - no update needed"
+          fi

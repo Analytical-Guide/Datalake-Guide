@@ -1,0 +1,216 @@
+name: Code Recipes CI
+
+on:
+  pull_request:
+    paths:
+      - 'code-recipes/**'
+      - '.github/workflows/ci-code-recipes.yml'
+  workflow_dispatch:
+
+jobs:
+  detect-changed-recipes:
+    name: Detect Changed Recipes
+    runs-on: ubuntu-latest
+    outputs:
+      recipes: ${{ steps.changed-recipes.outputs.recipes }}
+      has-changes: ${{ steps.changed-recipes.outputs.has-changes }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get changed recipe directories
+        id: changed-recipes
+        run: |
+          # Get list of changed files in code-recipes directory
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            CHANGED_FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep '^code-recipes/' || true)
+          else
+            CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD | grep '^code-recipes/' || true)
+          fi
+          
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "has-changes=false" >> $GITHUB_OUTPUT
+            echo "recipes=[]" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          
+          # Extract unique recipe directories (3 levels deep: code-recipes/category/recipe-name)
+          RECIPE_DIRS=$(echo "$CHANGED_FILES" | cut -d/ -f1-3 | sort -u)
+          
+          # Convert to JSON array for matrix
+          RECIPES_JSON=$(echo "$RECIPE_DIRS" | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          
+          echo "has-changes=true" >> $GITHUB_OUTPUT
+          echo "recipes=$RECIPES_JSON" >> $GITHUB_OUTPUT
+          
+          echo "Changed recipes:"
+          echo "$RECIPES_JSON" | jq .
+
+  lint-python:
+    name: Lint Python Code
+    runs-on: ubuntu-latest
+    needs: detect-changed-recipes
+    if: needs.detect-changed-recipes.outputs.has-changes == 'true'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install linting tools
+        run: |
+          pip install black==23.* flake8==6.*
+
+      - name: Run black formatter check
+        run: |
+          echo "Checking Python code formatting with black..."
+          find code-recipes -name "*.py" -type f | xargs black --check --diff || {
+            echo "❌ Code formatting issues found. Run 'black .' to fix."
+            exit 1
+          }
+
+      - name: Run flake8 linter
+        run: |
+          echo "Linting Python code with flake8..."
+          find code-recipes -name "*.py" -type f | xargs flake8 --max-line-length=88 --extend-ignore=E203,W503 || {
+            echo "❌ Linting issues found. Please fix the issues above."
+            exit 1
+          }
+
+  validate-recipes:
+    name: Validate Recipe
+    runs-on: ubuntu-latest
+    needs: [detect-changed-recipes, lint-python]
+    if: needs.detect-changed-recipes.outputs.has-changes == 'true'
+    strategy:
+      fail-fast: false
+      matrix:
+        recipe: ${{ fromJson(needs.detect-changed-recipes.outputs.recipes) }}
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+
+      - name: Check recipe structure
+        run: |
+          RECIPE_DIR="${{ matrix.recipe }}"
+          echo "Validating recipe structure for: $RECIPE_DIR"
+          
+          # Check if required files exist
+          REQUIRED_FILES=("problem.md" "validate.sh")
+          MISSING_FILES=()
+          
+          for file in "${REQUIRED_FILES[@]}"; do
+            if [ ! -f "$RECIPE_DIR/$file" ]; then
+              MISSING_FILES+=("$file")
+            fi
+          done
+          
+          # Check if at least one solution file exists
+          if [ ! -f "$RECIPE_DIR/solution.py" ] && [ ! -f "$RECIPE_DIR/solution.sql" ]; then
+            MISSING_FILES+=("solution.py or solution.sql")
+          fi
+          
+          # Check if requirements file exists (for Python recipes)
+          if [ -f "$RECIPE_DIR/solution.py" ] && [ ! -f "$RECIPE_DIR/requirements.txt" ] && [ ! -f "$RECIPE_DIR/environment.yml" ]; then
+            echo "⚠️  Warning: Python recipe without requirements.txt or environment.yml"
+          fi
+          
+          if [ ${#MISSING_FILES[@]} -gt 0 ]; then
+            echo "❌ Recipe structure validation failed!"
+            echo "Missing required files:"
+            printf '  - %s\n' "${MISSING_FILES[@]}"
+            exit 1
+          fi
+          
+          echo "✅ Recipe structure is valid"
+
+      - name: Install recipe dependencies
+        run: |
+          RECIPE_DIR="${{ matrix.recipe }}"
+          
+          # Install from requirements.txt if it exists
+          if [ -f "$RECIPE_DIR/requirements.txt" ]; then
+            echo "Installing dependencies from requirements.txt..."
+            pip install -r "$RECIPE_DIR/requirements.txt"
+          fi
+          
+          # Install from environment.yml if it exists (simplified approach)
+          if [ -f "$RECIPE_DIR/environment.yml" ]; then
+            echo "⚠️  Note: environment.yml found but using pip for CI. Consider adding requirements.txt."
+          fi
+
+      - name: Make validation script executable
+        run: |
+          chmod +x "${{ matrix.recipe }}/validate.sh"
+
+      - name: Run recipe validation
+        run: |
+          RECIPE_DIR="${{ matrix.recipe }}"
+          cd "$RECIPE_DIR"
+          
+          echo "========================================="
+          echo "🧪 Validating recipe: $RECIPE_DIR"
+          echo "========================================="
+          
+          # Run the validation script
+          ./validate.sh
+          
+          if [ $? -eq 0 ]; then
+            echo "✅ Recipe validation passed!"
+          else
+            echo "❌ Recipe validation failed!"
+            exit 1
+          fi
+
+      - name: Upload validation logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation-logs-${{ matrix.recipe }}
+          path: |
+            /tmp/recipe_output.log
+            /tmp/*.log
+          if-no-files-found: ignore
+          retention-days: 7
+
+  validate-success:
+    name: All Validations Passed
+    runs-on: ubuntu-latest
+    needs: [detect-changed-recipes, lint-python, validate-recipes]
+    if: always()
+    steps:
+      - name: Check validation results
+        run: |
+          if [ "${{ needs.detect-changed-recipes.outputs.has-changes }}" == "false" ]; then
+            echo "ℹ️  No recipe changes detected"
+            exit 0
+          fi
+          
+          if [ "${{ needs.lint-python.result }}" == "failure" ]; then
+            echo "❌ Python linting failed"
+            exit 1
+          fi
+          
+          if [ "${{ needs.validate-recipes.result }}" == "failure" ]; then
+            echo "❌ Recipe validation failed"
+            exit 1
+          fi
+          
+          echo "✅ All recipe validations passed!"

@@ -1,0 +1,72 @@
+name: Gamification Engine
+
+on:
+  pull_request:
+    types: [closed]
+  pull_request_review:
+    types: [submitted]
+  issues:
+    types: [closed]
+  discussion_comment:
+    types: [created]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: read
+  issues: read
+
+jobs:
+  update-contributor-stats:
+    name: Update Contributor Statistics
+    runs-on: ubuntu-latest
+    # Only run if PR was merged or review was approved
+    if: |
+      (github.event_name == 'pull_request' && github.event.pull_request.merged == true) ||
+      (github.event_name == 'pull_request_review' && github.event.review.state == 'approved') ||
+      github.event_name == 'issues' ||
+      github.event_name == 'discussion_comment' ||
+      github.event_name == 'workflow_dispatch'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install PyGithub==2.*
+
+      - name: Update contributor statistics
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPOSITORY: ${{ github.repository }}
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_PAYLOAD: ${{ toJson(github.event) }}
+        run: |
+          python scripts/update_contributor_stats.py
+
+      - name: Commit updated statistics
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          if [ -f community/contributors.json ]; then
+            git add community/contributors.json
+            
+            if git diff --staged --quiet; then
+              echo "No changes to commit"
+            else
+              git commit -m "Update contributor statistics [skip ci]"
+              git push
+              echo "✅ Contributor statistics updated"
+            fi
+          else
+            echo "⚠️  contributors.json not found, nothing to commit"
+          fi

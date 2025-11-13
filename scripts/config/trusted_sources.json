@@ -1,0 +1,19 @@
+{
+  "rss_feeds": [
+    "https://delta.io/blog/feed.xml",
+    "https://www.databricks.com/blog/category/engineering/delta/feed"
+  ],
+  "websites": [
+    "https://delta.io/blog/",
+    "https://iceberg.apache.org/blogs/"
+  ],
+  "keywords": [
+    "delta lake",
+    "apache iceberg",
+    "data lakehouse",
+    "table format",
+    "acid transactions",
+    "data lake",
+    "parquet optimization"
+  ]
+}

@@ -1,0 +1,10 @@
+# Python dependencies for Basic Delta Table recipe
+# Install with: pip install -r requirements.txt
+
+# Core Spark and Delta Lake
+pyspark>=3.3.0
+delta-spark>=2.3.0
+
+# Optional: For enhanced DataFrame operations
+pandas>=1.5.0
+pyarrow>=10.0.0
