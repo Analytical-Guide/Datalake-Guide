@@ -74,7 +74,17 @@ Every recipe in our [code-recipes](code-recipes/) directory follows a standardiz
 ## 🏆 Community Leaderboard
 
 <!-- LEADERBOARD_START -->
-*Leaderboard will be automatically updated daily. Start contributing to see your name here!*
+### 🏆 Top Contributors
+
+Thank you to our amazing community members who make this knowledge hub possible!
+
+| Rank | Contributor | Points | PRs | Reviews | Issues |
+|------|-------------|--------|-----|---------|--------|
+| 🥇 #1 | [@Copilot](https://github.com/Copilot) | **50** | 1 | 0 | 0 |
+
+*Last updated: 2025-11-13 12:29 UTC*
+
+**Want to see your name here?** Check out our [Contributing Guide](CONTRIBUTING.md) to get started!
 <!-- LEADERBOARD_END -->
 
 ## 🌟 Contribution Spotlight
