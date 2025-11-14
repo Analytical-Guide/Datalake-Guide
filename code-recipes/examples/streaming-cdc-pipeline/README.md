@@ -1,3 +1,9 @@
+---
+title: Streaming CDC Pipeline Recipe
+permalink: /code-recipes/examples/streaming-cdc-pipeline/
+description: End-to-end guide for building a streaming CDC pipeline on Delta Lake with Structured Streaming.
+---
+
 # Streaming CDC Pipeline Recipe
 
 This recipe demonstrates building a complete real-time Change Data Capture (CDC) pipeline using Delta Lake and Apache Spark Structured Streaming.

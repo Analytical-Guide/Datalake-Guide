@@ -1,3 +1,9 @@
+---
+title: Time Series Forecasting for Weather Prediction
+permalink: /code-recipes/examples/time-series-forecasting/
+description: Comprehensive workflow for building, validating, and deploying weather forecasts with Delta Lake.
+---
+
 # Time Series Forecasting for Weather Prediction
 
 ## Problem Statement

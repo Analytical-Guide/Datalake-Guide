@@ -1,3 +1,9 @@
+---
+title: Basic Apache Iceberg Table Creation Recipe
+permalink: /code-recipes/examples/basic-iceberg-table/
+description: Step-by-step example for provisioning Apache Iceberg tables with PySpark and validating core capabilities.
+---
+
 # Basic Apache Iceberg Table Creation Recipe
 
 ## Overview

@@ -1,3 +1,9 @@
+---
+title: Problem – Financial Transactions Processing and Analytics
+permalink: /code-recipes/examples/financial-transactions/problem/
+description: Business problem framing for a compliant financial transactions lakehouse solution.
+---
+
 # Problem: Financial Transactions Processing and Analytics
 
 ## Use Case

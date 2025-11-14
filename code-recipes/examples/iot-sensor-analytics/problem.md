@@ -1,3 +1,9 @@
+---
+title: Problem – IoT Sensor Analytics and Time-Series Processing
+permalink: /code-recipes/examples/iot-sensor-analytics/problem/
+description: Business context for building an IoT analytics pipeline on Delta Lake or Apache Iceberg.
+---
+
 # Problem: IoT Sensor Analytics and Time-Series Processing
 
 ## Use Case

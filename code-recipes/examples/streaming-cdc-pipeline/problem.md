@@ -1,3 +1,9 @@
+---
+title: Problem – Streaming CDC Pipeline with Change Data Capture
+permalink: /code-recipes/examples/streaming-cdc-pipeline/problem/
+description: Business requirements for a streaming change-data-capture pipeline using Delta Lake or Iceberg.
+---
+
 # Problem: Streaming CDC Pipeline with Change Data Capture
 
 ## Use Case
