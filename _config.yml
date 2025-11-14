@@ -1,0 +1,97 @@
+# Site settings
+title: "Delta Lake & Apache Iceberg Knowledge Hub"
+description: "Building the definitive, community-driven knowledge ecosystem for modern data lakehouse technologies"
+url: "https://analytical-guide.github.io"
+baseurl: "/Datalake-Guide"
+repository: Analytical-Guide/Datalake-Guide
+github_username: Analytical-Guide
+
+# Author information
+author: "Analytical Guide Community"
+email: "community@analytical-guide.com"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: minima
+
+# Kramdown settings
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    default_lang: python
+
+# Collections
+collections:
+  docs:
+    output: true
+    permalink: /:collection/:name/
+  code_recipes:
+    output: true
+    permalink: /code-recipes/:name/
+
+# Include files
+include:
+  - docs
+  - code-recipes
+  - scripts
+  - community
+  - _layouts
+  - _includes
+  - assets
+
+# Exclude files
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - .bundle/
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - .vscode/
+  - "*.pyc"
+  - "__pycache__/"
+  - "*.ipynb"
+  - ".git"
+  - ".github"
+  - "node_modules"
+  - "*.log"
+  - ".DS_Store"
+  - "Thumbs.db"
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Custom variables
+github_url: "https://github.com/Analytical-Guide/Datalake-Guide"
+issues_url: "https://github.com/Analytical-Guide/Datalake-Guide/issues"
+discussions_url: "https://github.com/Analytical-Guide/Datalake-Guide/discussions"
+
+# SEO and social
+social:
+  name: "Delta Lake & Apache Iceberg Knowledge Hub"
+  links:
+    - https://github.com/Analytical-Guide/Datalake-Guide
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "docs"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+      type: "code_recipes"
+    values:
+      layout: "default"
+
+# Markdown settings
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
