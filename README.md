@@ -71,29 +71,6 @@ Every recipe in our [code-recipes](code-recipes/) directory follows a standardiz
 - **Best Practices**: Industry-tested patterns and anti-patterns
 - **Architecture Guides**: Reference implementations for various scales
 
-## 🏆 Community Leaderboard
-
-<!-- LEADERBOARD_START -->
-### 🏆 Top Contributors
-
-Thank you to our amazing community members who make this knowledge hub possible!
-
-| Rank | Contributor | Points | PRs | Reviews | Issues |
-|------|-------------|--------|-----|---------|--------|
-| 🥇 #1 | [@Copilot](https://github.com/Copilot) | **50** | 1 | 0 | 0 |
-
-*Last updated: 2025-11-14 12:28 UTC*
-
-**Want to see your name here?** Check out our [Contributing Guide](CONTRIBUTING.md) to get started!
-<!-- LEADERBOARD_END -->
-
-## 🌟 Contribution Spotlight
-
-We celebrate our community! Here are some recent outstanding contributions:
-
-<!-- SPOTLIGHT_START -->
-*Recent contributions will appear here automatically*
-<!-- SPOTLIGHT_END -->
 
 ## 🚀 Getting Started
 
