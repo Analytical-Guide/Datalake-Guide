@@ -169,5 +169,5 @@ This awesome list is part of the Delta Lake & Apache Iceberg Knowledge Hub, lice
 
 ---
 
-**Last Updated**: 2024-01-01  
+**Last Updated**: 2025-11-14  
 **Maintained By**: Community + AI Aggregator 🤖
