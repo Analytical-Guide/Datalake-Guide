@@ -1,3 +1,9 @@
+---
+title: Awesome Delta Lake & Apache Iceberg Resources
+description: Curated list of high-quality learning materials and tools for Delta Lake and Apache Iceberg practitioners.
+permalink: /docs/awesome-list/
+---
+
 # Awesome Delta Lake & Apache Iceberg Resources
 
 A curated list of articles, blog posts, videos, and resources about Delta Lake and Apache Iceberg, automatically maintained by our community and AI-powered aggregator.

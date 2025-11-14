@@ -1,3 +1,9 @@
+---
+title: Quick Start Guide
+permalink: /quickstart/
+description: Orientation guide for exploring resources, running recipes, and contributing to the knowledge hub.
+---
+
 # Quick Start Guide - Delta Lake & Apache Iceberg Knowledge Hub
 
 Welcome to the Delta Lake & Apache Iceberg Knowledge Hub! This guide will help you quickly get started, whether you're here to learn, contribute, or explore.

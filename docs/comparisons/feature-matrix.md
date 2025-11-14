@@ -1,3 +1,9 @@
+---
+title: Delta Lake vs Apache Iceberg Feature Comparison Matrix
+description: Comprehensive side-by-side comparison of capabilities across Delta Lake and Apache Iceberg.
+permalink: /docs/comparisons/feature-matrix/
+---
+
 # Delta Lake vs Apache Iceberg: Feature Comparison Matrix
 
 This comprehensive comparison matrix helps you understand the differences between Delta Lake and Apache Iceberg to make informed architectural decisions.

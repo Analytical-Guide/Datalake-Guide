@@ -1,3 +1,9 @@
+---
+title: Contributing Guide
+permalink: /contributing/
+description: How to contribute documentation, code recipes, and improvements to the knowledge hub.
+---
+
 # Contributing to Delta Lake & Apache Iceberg Knowledge Hub
 
 Thank you for your interest in contributing to our community-driven knowledge hub! We welcome contributions of all kinds, from code recipes and documentation to bug fixes and reviews.

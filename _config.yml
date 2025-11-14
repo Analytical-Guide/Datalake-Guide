@@ -22,15 +22,6 @@ kramdown:
   syntax_highlighter_opts:
     default_lang: python
 
-# Collections
-collections:
-  docs:
-    output: true
-    permalink: /:collection/:name/
-  code_recipes:
-    output: true
-    permalink: /code-recipes/:name/
-
 # Include files
 include:
   - docs
@@ -66,6 +57,7 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
+  - jekyll-optional-front-matter
 
 # Custom variables
 github_url: "https://github.com/Analytical-Guide/Datalake-Guide"
@@ -82,12 +74,7 @@ social:
 defaults:
   - scope:
       path: ""
-      type: "docs"
-    values:
-      layout: "default"
-  - scope:
-      path: ""
-      type: "code_recipes"
+      type: "pages"
     values:
       layout: "default"
 

@@ -1,3 +1,9 @@
+---
+title: Problem – Creating a Basic Delta Lake Table
+permalink: /code-recipes/examples/basic-delta-table/problem/
+description: Business challenge describing the need to stand up an ACID-compliant Delta Lake table.
+---
+
 # Problem: Creating a Basic Delta Lake Table
 
 ## Use Case

@@ -1,3 +1,9 @@
+---
+title: Problem – Creating a Basic Apache Iceberg Table
+permalink: /code-recipes/examples/basic-iceberg-table/problem/
+description: Business scenario outlining why you need a transactional Apache Iceberg table.
+---
+
 # Problem: Creating a Basic Apache Iceberg Table
 
 ## Use Case

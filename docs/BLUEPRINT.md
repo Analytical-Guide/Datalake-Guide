@@ -1,3 +1,9 @@
+---
+title: Delta Lake & Apache Iceberg Knowledge Hub - Complete Blueprint
+description: Comprehensive architectural blueprint outlining the systems, automations, and community workflows that power the knowledge hub.
+permalink: /docs/blueprint/
+---
+
 # Delta Lake & Apache Iceberg Knowledge Hub - Complete Blueprint
 
 ## Executive Summary

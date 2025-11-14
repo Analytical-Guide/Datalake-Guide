@@ -1,3 +1,9 @@
+---
+title: Getting Started with Delta Lake and Apache Iceberg
+description: Beginner-friendly tutorial that explains how to stand up and work with both table formats.
+permalink: /docs/tutorials/getting-started/
+---
+
 # Getting Started with Delta Lake and Apache Iceberg
 
 This tutorial provides a comprehensive introduction to both Delta Lake and Apache Iceberg, helping you understand when and how to use each technology.

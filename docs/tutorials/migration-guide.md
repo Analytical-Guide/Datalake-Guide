@@ -1,3 +1,9 @@
+---
+title: Data Lake Migration Guide
+description: Strategies and checklists for migrating Parquet lakes to Delta Lake or Apache Iceberg with minimal risk.
+permalink: /docs/tutorials/migration-guide/
+---
+
 # Data Lake Migration Guide: From Parquet to Delta Lake & Apache Iceberg
 
 ## Overview

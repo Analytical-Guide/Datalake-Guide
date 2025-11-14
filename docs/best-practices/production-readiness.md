@@ -1,3 +1,9 @@
+---
+title: Production Readiness for Delta Lake and Apache Iceberg
+description: Detailed checklist covering data organization, performance, operations, and governance for production deployments.
+permalink: /docs/best-practices/production-readiness/
+---
+
 # Production Readiness for Delta Lake and Apache Iceberg
 
 This guide outlines best practices for running Delta Lake and Apache Iceberg in production environments.

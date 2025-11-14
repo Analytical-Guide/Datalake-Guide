@@ -1,3 +1,9 @@
+---
+title: Advanced Schema Evolution Recipe
+permalink: /code-recipes/examples/advanced-schema-evolution/
+description: Hands-on guide for managing complex schema evolution workflows using Delta Lake and Apache Iceberg.
+---
+
 # Advanced Schema Evolution Recipe
 
 This recipe demonstrates advanced schema evolution patterns for complex data structures in Delta Lake and Apache Iceberg tables.

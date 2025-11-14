@@ -1,3 +1,9 @@
+---
+title: Basic Delta Table Creation Recipe
+permalink: /code-recipes/examples/basic-delta-table/
+description: Guided walkthrough for building your first Delta Lake table with PySpark and validation steps.
+---
+
 # Basic Delta Table Creation Recipe
 
 ## Overview

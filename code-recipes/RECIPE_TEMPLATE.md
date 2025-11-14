@@ -1,3 +1,9 @@
+---
+title: Code Recipe Template
+permalink: /code-recipes/template/
+description: Standardized structure and checklist for creating new Delta Lake or Apache Iceberg recipes.
+---
+
 # Recipe Template
 
 Use this template when creating a new code recipe. Copy this entire directory structure and customize it for your use case.

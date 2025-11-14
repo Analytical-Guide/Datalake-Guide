@@ -1,3 +1,9 @@
+---
+title: Local Development Guide
+description: Step-by-step instructions for running and testing the knowledge hub locally with and without Jekyll.
+permalink: /docs/local-development/
+---
+
 # Local Development
 
 This guide explains how to set up and run the Jekyll site locally for development and testing.

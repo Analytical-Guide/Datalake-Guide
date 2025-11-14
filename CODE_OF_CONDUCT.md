@@ -1,3 +1,9 @@
+---
+title: Code of Conduct
+permalink: /code-of-conduct/
+description: Community standards and expectations that ensure inclusive collaboration.
+---
+
 # Contributor Covenant Code of Conduct
 
 ## Our Pledge

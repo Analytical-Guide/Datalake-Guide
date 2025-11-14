@@ -1,3 +1,9 @@
+---
+title: Problem – Advanced Schema Evolution and Migration
+permalink: /code-recipes/examples/advanced-schema-evolution/problem/
+description: Business context and acceptance criteria for evolving complex schemas across Delta Lake and Apache Iceberg.
+---
+
 # Problem: Advanced Schema Evolution and Migration
 
 ## Use Case

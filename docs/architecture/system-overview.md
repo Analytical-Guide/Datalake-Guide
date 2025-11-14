@@ -1,4 +1,10 @@
+---
+title: System Overview
+description: High-level walkthrough of the architecture powering the Delta Lake & Apache Iceberg Knowledge Hub.
+permalink: /docs/architecture/system-overview/
+---
 # Knowledge Hub System Architecture
+ 
 
 This document describes the overall architecture of the Delta Lake & Apache Iceberg Knowledge Hub, including its automation systems, workflows, and data flows.
 
