@@ -12,8 +12,8 @@ html {
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    color: #333;
-    background-color: #fff;
+    color: #222;
+    background: linear-gradient(135deg, #f8fbff 0%, #e3f0ff 100%);
     line-height: 1.6;
 }
 
@@ -25,11 +25,12 @@ body {
 
 /* Header and Navigation */
 .site-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 1rem 0;
+    background: linear-gradient(90deg, #fff 0%, #b3e5fc 100%);
+    color: #222;
+    padding: 1.5rem 0 1rem 0;
     margin-bottom: 2rem;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 12px rgba(51, 181, 229, 0.08);
+    border-bottom: 3px solid #4fc3f7;
 }
 
 .main-nav {
@@ -40,13 +41,14 @@ body {
 }
 
 .nav-brand a {
-    color: white;
+    color: #039be5;
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     font-weight: bold;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    letter-spacing: 1px;
 }
 
 .nav-brand i {
@@ -61,30 +63,36 @@ body {
 }
 
 .nav-links a {
-    color: white;
+    color: #039be5;
     text-decoration: none;
-    font-weight: 500;
-    transition: opacity 0.3s ease;
+    font-weight: 600;
+    transition: color 0.2s, background 0.2s;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
 }
 
 .nav-links a:hover {
-    opacity: 0.8;
+    background: #e1f5fe;
+    color: #01579b;
 }
 
 .nav-actions .btn {
-    background: rgba(255,255,255,0.2);
-    color: white;
-    padding: 0.5rem 1rem;
+    background: #4fc3f7;
+    color: #fff;
+    padding: 0.5rem 1.2rem;
     border-radius: 5px;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    transition: background 0.3s ease;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(33,150,243,0.08);
+    transition: background 0.2s, color 0.2s;
 }
 
 .nav-actions .btn:hover {
-    background: rgba(255,255,255,0.3);
+    background: #039be5;
+    color: #fff;
 }
 
 /* Main Content */
