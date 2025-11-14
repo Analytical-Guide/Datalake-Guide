@@ -83,7 +83,7 @@ Every recipe in our [code-recipes](code-recipes/) directory follows a standardiz
 ### For Contributors
 
 1. Read our [Contributing Guide](CONTRIBUTING.md)
-2. Check [open issues](../../issues) for areas needing help
+2. Check [open issues](https://github.com/Analytical-Guide/Datalake-Guide/issues) for areas needing help
 3. Review the [Code of Conduct](CODE_OF_CONDUCT.md)
 4. Submit your first pull request!
 
@@ -100,9 +100,9 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 
 ## 🤝 Community & Support
 
-- **Issues**: [Report bugs or request features](../../issues)
-- **Discussions**: [Join community discussions](../../discussions)
-- **Pull Requests**: [Contribute code or documentation](../../pulls)
+- **Issues**: [Report bugs or request features](https://github.com/Analytical-Guide/Datalake-Guide/issues)
+- **Discussions**: [Join community discussions](https://github.com/Analytical-Guide/Datalake-Guide/discussions)
+- **Pull Requests**: [Contribute code or documentation](https://github.com/Analytical-Guide/Datalake-Guide/pulls)
 
 ## 🙏 Acknowledgments
 

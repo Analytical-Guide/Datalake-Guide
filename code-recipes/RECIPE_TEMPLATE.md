@@ -176,8 +176,8 @@ Before submitting your recipe as a pull request, ensure:
 
 If you need help creating a recipe:
 - Check existing recipes for examples
-- Ask in [Discussions](../../discussions)
-- Read the [Contributing Guide](../../CONTRIBUTING.md)
+- Ask in [Discussions](https://github.com/Analytical-Guide/Datalake-Guide/discussions)
+- Read the [Contributing Guide](../CONTRIBUTING.md)
 
 ## Recognition
 

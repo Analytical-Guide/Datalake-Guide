@@ -249,10 +249,10 @@ flake8 .
 → Follow [Contributing Guide](CONTRIBUTING.md)
 
 **Report a bug**
-→ [Open an issue](../../issues)
+→ [Open an issue](https://github.com/Analytical-Guide/Datalake-Guide/issues)
 
 **Ask a question**
-→ [Start a discussion](../../discussions)
+→ [Start a discussion](https://github.com/Analytical-Guide/Datalake-Guide/discussions)
 
 **See who's contributing**
 → Check [README leaderboard](README.md#-community-leaderboard)
@@ -268,7 +268,7 @@ flake8 .
 
 - [Delta Lake Slack](https://delta-users.slack.com/)
 - [Iceberg Slack](https://apache-iceberg.slack.com/)
-- [Repository Discussions](../../discussions)
+- [Repository Discussions](https://github.com/Analytical-Guide/Datalake-Guide/discussions)
 
 ### Deep Dives
 
@@ -286,8 +286,8 @@ flake8 .
 
 ## ❓ Getting Help
 
-- **Questions**: [Open a Discussion](../../discussions)
-- **Bugs**: [Create an Issue](../../issues)
+- **Questions**: [Open a Discussion](https://github.com/Analytical-Guide/Datalake-Guide/discussions)
+- **Bugs**: [Create an Issue](https://github.com/Analytical-Guide/Datalake-Guide/issues)
 - **Security**: Contact maintainers directly
 
 ## 🏆 Hall of Fame
@@ -298,6 +298,6 @@ Check out our top contributors on the [main README](README.md#-community-leaderb
 
 **Ready to dive in?** Pick a starting point above and begin your journey! 🚀
 
-**Have questions?** Don't hesitate to ask in [Discussions](../../discussions).
+**Have questions?** Don't hesitate to ask in [Discussions](https://github.com/Analytical-Guide/Datalake-Guide/discussions).
 
 **Want to contribute?** We'd love your help! See [CONTRIBUTING.md](CONTRIBUTING.md).

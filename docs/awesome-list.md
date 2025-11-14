@@ -46,9 +46,9 @@ Comprehensive guide covering Iceberg architecture, design decisions, and best pr
 
 ### Tutorials
 
-- [Delta Lake Quickstart](../tutorials/getting-started.md) - Get started with Delta Lake
-- [Iceberg Quickstart](../tutorials/getting-started.md) - Get started with Apache Iceberg
-- [Migration Guide: Parquet to Delta/Iceberg](../tutorials/migration.md) - Convert existing data lakes
+- [Delta Lake Quickstart]({{ '/docs/tutorials/getting-started/' | relative_url }}) - Get started with Delta Lake
+- [Iceberg Quickstart]({{ '/docs/tutorials/getting-started/' | relative_url }}) - Get started with Apache Iceberg
+- [Migration Guide: Parquet to Delta/Iceberg]({{ '/docs/tutorials/migration-guide/' | relative_url }}) - Convert existing data lakes
 
 ### Video Content
 

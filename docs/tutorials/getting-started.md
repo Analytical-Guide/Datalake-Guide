@@ -378,19 +378,19 @@ actions.rewriteDataFiles().execute()
 After completing this tutorial, explore:
 
 1. **Advanced Features**:
-   - [Schema Evolution Guide](schema-evolution.md)
-   - [Time Travel Deep Dive](time-travel.md)
-   - [Concurrency Control](concurrency.md)
+    - [Advanced Schema Evolution Recipe]({{ '/code-recipes/examples/advanced-schema-evolution/' | relative_url }})
+    - [Time Travel Deep Dive](https://docs.delta.io/latest/delta-utility.html#time-travel)
+    - [Concurrency Control](https://docs.delta.io/latest/delta-concurrency-control.html)
 
 2. **Production Patterns**:
-   - [Data Pipeline Architectures](../architecture/data-pipelines.md)
-   - [Monitoring and Observability](monitoring.md)
-   - [Cost Optimization](cost-optimization.md)
+    - [System Architecture Overview]({{ '/docs/architecture/system-overview/' | relative_url }})
+    - [Production Readiness Checklist]({{ '/docs/best-practices/production-readiness/' | relative_url }})
+    - [Knowledge Hub Blueprint]({{ '/docs/blueprint/' | relative_url }})
 
 3. **Hands-on Practice**:
-   - Browse [Code Recipes](../../code-recipes/)
-   - Try [Performance Tuning Examples](../../code-recipes/performance/)
-   - Explore [Migration Strategies](../../code-recipes/migration/)
+    - Browse the [Code Recipes Collection]({{ '/code-recipes/' | relative_url }})
+    - Try the [Streaming CDC Pipeline]({{ '/code-recipes/examples/streaming-cdc-pipeline/' | relative_url }})
+    - Explore [Time Series Forecasting]({{ '/code-recipes/examples/time-series-forecasting/' | relative_url }})
 
 ## Resources
 

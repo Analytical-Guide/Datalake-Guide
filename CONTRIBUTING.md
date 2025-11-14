@@ -287,8 +287,8 @@ We track and celebrate contributions through our gamification system:
 
 ## 📞 Getting Help
 
-- **Questions**: Open a [Discussion](../../discussions)
-- **Bugs**: Open an [Issue](../../issues)
+- **Questions**: Open a [Discussion](https://github.com/Analytical-Guide/Datalake-Guide/discussions)
+- **Bugs**: Open an [Issue](https://github.com/Analytical-Guide/Datalake-Guide/issues)
 - **Security**: Email security concerns to the maintainers
 
 ## 🎓 Learning Resources
@@ -309,4 +309,4 @@ Every contribution, no matter how small, helps make this knowledge hub more valu
 
 ---
 
-**Questions?** Open a [Discussion](../../discussions) or reach out to the maintainers.
+**Questions?** Open a [Discussion](https://github.com/Analytical-Guide/Datalake-Guide/discussions) or reach out to the maintainers.

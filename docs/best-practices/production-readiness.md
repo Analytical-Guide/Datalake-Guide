@@ -1286,7 +1286,7 @@ Production readiness requires attention to multiple aspects: data organization, 
 
 - [Delta Lake Performance Tuning](https://docs.delta.io/latest/optimizations-oss.html)
 - [Iceberg Performance](https://iceberg.apache.org/docs/latest/performance/)
-- [Data Engineering Best Practices](../architecture/best-practices.md)
+- [Knowledge Hub Blueprint]({{ '/docs/blueprint/' | relative_url }})
 
 ---
 
