@@ -80,7 +80,8 @@ The repository already has robust automated link checking:
   - Checks spelling with typos
 
 ### 3. Automated Issue Creation
-The workflow automatically creates GitHub issues labeled `documentation` and `broken-links` when broken links are detected in PRs.
+The workflow automatically creates GitHub issues labeled `documentation` and `broken-links` when broken links are
+detected in PRs.
 
 ## External Link Validation Limitations
 
