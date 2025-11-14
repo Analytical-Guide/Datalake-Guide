@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  weather-forecasting:
+    build: .
+    container_name: weather-forecasting-demo
+    volumes:
+      - ./data:/app/data
+      - ./output:/app/output
+    environment:
+      - PYTHONPATH=/app
+    depends_on:
+      - postgres
+    command: ["python", "solution.py"]
+
+  postgres:
+    image: postgres:15
+    container_name: weather-postgres
+    environment:
+      POSTGRES_DB: weather_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    profiles: ["with-postgres"]
+
+  # Optional: Service to fetch data separately
+  data-fetcher:
+    build: .
+    container_name: weather-data-fetcher
+    volumes:
+      - ./data:/app/data
+    profiles: ["fetch-data"]
+    command: ["python", "fetch_weather_data.py", "--city", "New York", "--days", "365"]
+
+volumes:
+  postgres_data:

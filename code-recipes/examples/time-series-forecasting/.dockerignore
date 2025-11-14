@@ -1,0 +1,14 @@
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+*.pyo
+*.pyd
+*.log
+.env
+venv/
+.env*/
+.git
+.gitignore
+README-images/
+node_modules/
+.DS_Store
