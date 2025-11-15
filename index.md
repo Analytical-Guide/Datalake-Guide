@@ -3,50 +3,209 @@ layout: default
 title: Delta Lake & Apache Iceberg Knowledge Hub
 ---
 
-# 🌊 Delta Lake & Apache Iceberg Knowledge Hub
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1 class="hero-title">🌊 Delta Lake & Apache Iceberg Knowledge Hub</h1>
+        <p class="hero-subtitle">Building the definitive, community-driven knowledge ecosystem for modern data lakehouse technologies</p>
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
-[![Code of Conduct](https://img.shields.io/badge/Code%20of%20Conduct-Contributor%20Covenant-purple.svg)](CODE_OF_CONDUCT.md)
-[![Delta Lake](https://img.shields.io/badge/Delta%20Lake-Latest-00ADD8?logo=databricks)](https://delta.io/)
-[![Apache Iceberg](https://img.shields.io/badge/Apache%20Iceberg-Latest-306998?logo=apache)](https://iceberg.apache.org/)
-[![Python](https://img.shields.io/badge/Python-3.8+-3776AB?logo=python)](https://www.python.org/)
-[![GitHub Actions](https://img.shields.io/badge/CI/CD-GitHub%20Actions-2088FF?logo=github-actions)](https://github.com/features/actions)
+        <div class="hero-badges">
+            <a href="https://delta.io/" class="hero-badge" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Delta Lake
+            </a>
+            <a href="https://iceberg.apache.org/" class="hero-badge" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Apache Iceberg
+            </a>
+            <span class="hero-badge">
+                <i class="fab fa-python"></i> Python 3.8+
+            </span>
+            <span class="hero-badge">
+                <i class="fas fa-code"></i> Production Ready
+            </span>
+        </div>
 
-## 🎯 Vision Statement
+        <a href="#features" class="hero-cta">
+            <span>Explore Features</span>
+            <i class="fas fa-arrow-down"></i>
+        </a>
+    </div>
+</section>
 
-**Building the definitive, community-driven knowledge ecosystem for modern data lakehouse technologies.** This repository serves as a living, breathing whitepaper that evolves with the data engineering landscape, combining comprehensive technical comparisons, battle-tested code recipes, and AI-powered content curation to empower data engineers worldwide to make informed architectural decisions and implement best practices for Delta Lake and Apache Iceberg.
+<!-- Features Grid -->
+<section id="features" class="features-grid">
+    <div class="feature-card">
+        <div class="feature-icon">
+            <i class="fas fa-balance-scale"></i>
+        </div>
+        <h3 class="feature-title">Comprehensive Comparisons</h3>
+        <p class="feature-description">Detailed side-by-side analysis of Delta Lake vs Apache Iceberg across time travel, schema evolution, partitioning, and performance characteristics.</p>
+        <a href="docs/comparisons/feature-matrix/" class="feature-link">
+            <span>View Matrix</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
 
-## 📚 Quick Links
+    <div class="feature-card">
+        <div class="feature-icon">
+            <i class="fas fa-code"></i>
+        </div>
+        <h3 class="feature-title">Battle-Tested Recipes</h3>
+        <p class="feature-description">Production-ready code examples with automated validation, comprehensive testing, and reproducible environments.</p>
+        <a href="code-recipes/" class="feature-link">
+            <span>Browse Recipes</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
 
-- [🔍 **Feature Comparison Matrix**](docs/comparisons/feature-matrix.md) - Detailed side-by-side comparison of Delta Lake vs Apache Iceberg
-- [👨‍💻 **Code Recipes**](code-recipes/) - Production-ready code examples with validation
-- [📖 **Tutorials**](docs/tutorials/) - Step-by-step guides for common use cases
-- [🏗️ **Architecture Patterns**](docs/architecture/) - Reference architectures and design patterns
-- [🤝 **Contributing Guide**](CONTRIBUTING.md) - Join our community and contribute
-- [📜 **Code of Conduct**](CODE_OF_CONDUCT.md) - Our community standards
+    <div class="feature-card">
+        <div class="feature-icon">
+            <i class="fas fa-graduation-cap"></i>
+        </div>
+        <h3 class="feature-title">Learning Resources</h3>
+        <p class="feature-description">Step-by-step tutorials, architecture patterns, and best practices for data lakehouse implementations.</p>
+        <a href="docs/tutorials/" class="feature-link">
+            <span>Start Learning</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
 
-## 💡 The "Living Whitepaper" Philosophy
+    <div class="feature-card">
+        <div class="feature-icon">
+            <i class="fas fa-robot"></i>
+        </div>
+        <h3 class="feature-title">AI-Powered Curation</h3>
+        <p class="feature-description">Machine learning-assisted content discovery, automated freshness checks, and intelligent documentation maintenance.</p>
+        <a href="docs/architecture/" class="feature-link">
+            <span>Explore Architecture</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
 
-Unlike traditional static documentation, this repository is designed as a **living knowledge base** that continuously evolves:
+    <div class="feature-card">
+        <div class="feature-icon">
+            <i class="fas fa-users"></i>
+        </div>
+        <h3 class="feature-title">Community Driven</h3>
+        <p class="feature-description">Gamified contribution system, diverse perspectives, and collaborative knowledge building for data engineers worldwide.</p>
+        <a href="CONTRIBUTING/" class="feature-link">
+            <span>Join Community</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
 
-- **🤖 Automated Freshness**: GitHub Actions workflows automatically detect stale content and create issues to keep documentation current
-- **✅ Validated Content**: Every code recipe is automatically tested in CI/CD to ensure it works with the latest versions
-- **🔗 Link Health**: Automated link checking prevents documentation rot
-- **📊 Community-Driven**: Contributions are gamified with a points system, encouraging diverse perspectives
-- **🧠 AI-Enhanced**: Machine learning assists in discovering, summarizing, and curating relevant content from across the web
-- **🎨 Diagrams as Code**: All architecture diagrams use Mermaid.js for version control and easy collaboration
+    <div class="feature-card">
+        <div class="feature-icon">
+            <i class="fas fa-shield-alt"></i>
+        </div>
+        <h3 class="feature-title">Quality Assured</h3>
+        <p class="feature-description">Automated testing, link validation, and continuous integration ensure reliable, up-to-date documentation.</p>
+        <a href="docs/best-practices/" class="feature-link">
+            <span>View Best Practices</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</section>
 
-## 🛠️ Tech Stack
+<!-- Stats Section -->
+<section class="stats-section">
+    <div class="stats-grid">
+        <div class="stat-item">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Code Recipes</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Test Coverage</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">Auto Validation</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">∞</div>
+            <div class="stat-label">Community Power</div>
+        </div>
+    </div>
+</section>
 
-This knowledge hub leverages cutting-edge technologies:
+<!-- Content Cards -->
+<section class="content-cards">
+    <div class="content-card">
+        <div class="content-card-header">
+            <div class="content-card-icon">
+                <i class="fas fa-book-open"></i>
+            </div>
+            <div>
+                <h3 class="content-card-title">Documentation</h3>
+                <div class="content-card-meta">Comprehensive guides and references</div>
+            </div>
+        </div>
+        <p class="content-card-description">Explore detailed documentation covering architecture patterns, migration strategies, and implementation best practices for modern data lakehouses.</p>
+        <div class="content-card-footer">
+            <div class="content-card-tags">
+                <span class="content-card-tag">guides</span>
+                <span class="content-card-tag">architecture</span>
+            </div>
+            <a href="docs/" class="content-card-action">Read Docs →</a>
+        </div>
+    </div>
 
-- **📊 Data Formats**: Delta Lake, Apache Iceberg
-- **💻 Languages**: Python, SQL, Scala
-- **🔄 Orchestration**: GitHub Actions, Python automation scripts
-- **📝 Documentation**: Markdown, Mermaid.js
-- **🧪 Testing**: pytest, shell scripts
-- **🎨 Code Quality**: black, flake8, markdownlint
-- **🔍 Content Discovery**: BeautifulSoup, feedparser, LLM APIs
+    <div class="content-card">
+        <div class="content-card-header">
+            <div class="content-card-icon">
+                <i class="fas fa-flask"></i>
+            </div>
+            <div>
+                <h3 class="content-card-title">Code Examples</h3>
+                <div class="content-card-meta">Production-ready implementations</div>
+            </div>
+        </div>
+        <p class="content-card-description">Access validated code recipes for common data lakehouse scenarios including schema evolution, time series analytics, and real-time processing.</p>
+        <div class="content-card-footer">
+            <div class="content-card-tags">
+                <span class="content-card-tag">python</span>
+                <span class="content-card-tag">spark</span>
+            </div>
+            <a href="code-recipes/" class="content-card-action">View Recipes →</a>
+        </div>
+    </div>
+
+    <div class="content-card">
+        <div class="content-card-header">
+            <div class="content-card-icon">
+                <i class="fas fa-users-cog"></i>
+            </div>
+            <div>
+                <h3 class="content-card-title">Community</h3>
+                <div class="content-card-meta">Join the conversation</div>
+            </div>
+        </div>
+        <p class="content-card-description">Connect with data engineers worldwide, contribute to the knowledge base, and participate in discussions about data lakehouse technologies.</p>
+        <div class="content-card-footer">
+            <div class="content-card-tags">
+                <span class="content-card-tag">community</span>
+                <span class="content-card-tag">contribute</span>
+            </div>
+            <a href="CONTRIBUTING/" class="content-card-action">Get Involved →</a>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="cta-section">
+    <div class="cta-content">
+        <h2 class="cta-title">Ready to Build Modern Data Lakehouses?</h2>
+        <p class="cta-description">Join thousands of data engineers who trust our comprehensive guides and battle-tested code recipes.</p>
+        <div class="cta-buttons">
+            <a href="docs/tutorials/getting-started/" class="btn btn-primary">
+                <i class="fas fa-rocket"></i> Get Started
+            </a>
+            <a href="https://github.com/Analytical-Guide/Datalake-Guide" class="btn btn-secondary" target="_blank">
+                <i class="fab fa-github"></i> View on GitHub
+            </a>
+        </div>
+    </div>
+</section>
 
 ## 🎯 What You'll Find Here
 
