@@ -87,7 +87,210 @@ Every recipe in our [code-recipes](code-recipes/) directory follows a standardiz
 3. Review the [Code of Conduct](CODE_OF_CONDUCT.md)
 4. Submit your first pull request!
 
-## 📈 Repository Stats
+## �️ Development & Deployment
+
+### Prerequisites
+
+- **Ruby**: 2.7+ (for Jekyll)
+- **Python**: 3.8+ (for scripts and validation)
+- **Node.js**: 16+ (optional, for additional tooling)
+- **Git**: Latest version
+
+### Local Development Setup
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Analytical-Guide/Datalake-Guide.git
+   cd Datalake-Guide
+   ```
+
+2. **Install Jekyll and dependencies**
+   ```bash
+   # Install Bundler if not already installed
+   gem install bundler
+
+   # Install project dependencies
+   bundle install
+   ```
+
+3. **Install Python dependencies** (for validation scripts)
+   ```bash
+   pip install -r requirements-dev.txt
+   ```
+
+4. **Start local development server**
+   ```bash
+   # Serve with live reload
+   bundle exec jekyll serve --livereload
+
+   # Or build and serve
+   bundle exec jekyll build && bundle exec jekyll serve
+   ```
+
+5. **Open your browser**
+   - Navigate to `http://localhost:4000/Datalake-Guide/`
+   - The site will automatically reload when you make changes
+
+### Development Workflow
+
+#### Making Changes
+
+1. **Create a feature branch**
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+
+2. **Make your changes**
+   - Edit Markdown files in `docs/`, `code-recipes/`, etc.
+   - Update styles in `assets/css/main.css`
+   - Modify scripts in `scripts/`
+
+3. **Test your changes**
+   ```bash
+   # Run validation tests
+   python scripts/validate_site.py
+
+   # Check for broken links
+   python scripts/check_internal_links.py
+
+   # Build the site
+   bundle exec jekyll build
+   ```
+
+4. **Preview changes locally**
+   ```bash
+   bundle exec jekyll serve
+   ```
+
+#### Code Quality
+
+- **Markdown**: Follow the style guide in `CONTRIBUTING.md`
+- **CSS**: Use the established design system (see [Design System Documentation](docs/design-system.md))
+- **JavaScript**: Follow modern ES6+ standards with accessibility in mind
+- **Python**: Use Black for formatting, follow PEP 8
+
+### Automated Testing
+
+Run the comprehensive test suite:
+
+```bash
+# Run all validation tests
+python scripts/validate_site.py
+
+# Check internal links
+python scripts/check_internal_links.py
+
+# Validate code recipes
+find code-recipes -name "validate.sh" -exec bash {} \;
+```
+
+### Deployment
+
+#### GitHub Pages (Automatic)
+
+The site is automatically deployed to GitHub Pages via GitHub Actions:
+
+1. **Push to main branch**
+   ```bash
+   git add .
+   git commit -m "Your commit message"
+   git push origin main
+   ```
+
+2. **GitHub Actions will:**
+   - Build the Jekyll site
+   - Run validation tests
+   - Deploy to GitHub Pages
+   - Report any failures
+
+#### Manual Deployment
+
+For manual deployment or custom environments:
+
+```bash
+# Build for production
+JEKYLL_ENV=production bundle exec jekyll build
+
+# Deploy to custom server
+rsync -avz _site/ user@server:/path/to/site/
+```
+
+### Environment Configuration
+
+#### Jekyll Configuration
+
+Key settings in `_config.yml`:
+- `url`: Site URL for absolute links
+- `baseurl`: Subpath for GitHub Pages
+- `repository`: GitHub repository for links
+- `plugins`: Enabled Jekyll plugins
+
+#### Custom Variables
+
+Available in `_config.yml`:
+- `github_url`: Full GitHub repository URL
+- `issues_url`: Issues page URL
+- `discussions_url`: Discussions page URL
+
+### Troubleshooting
+
+#### Common Issues
+
+1. **Jekyll build fails**
+   ```bash
+   # Clear Jekyll cache
+   rm -rf .jekyll-cache _site
+
+   # Reinstall dependencies
+   bundle install
+
+   # Try building again
+   bundle exec jekyll build
+   ```
+
+2. **Python scripts fail**
+   ```bash
+   # Ensure Python 3.8+
+   python --version
+
+   # Install/update dependencies
+   pip install -r requirements-dev.txt
+   ```
+
+3. **Links are broken**
+   ```bash
+   # Run link checker
+   python scripts/check_internal_links.py
+
+   # Fix any reported issues
+   ```
+
+4. **Styling issues**
+   - Check browser developer tools for CSS errors
+   - Ensure design system variables are used correctly
+   - Test responsive design across breakpoints
+
+#### Getting Help
+
+- **Issues**: [Report bugs](https://github.com/Analytical-Guide/Datalake-Guide/issues)
+- **Discussions**: [Ask questions](https://github.com/Analytical-Guide/Datalake-Guide/discussions)
+- **Documentation**: Check [local development docs](docs/local-development.md)
+
+### Performance Monitoring
+
+The site includes performance optimizations:
+
+- **Font loading**: Optimized with `font-display: swap`
+- **CSS**: Minified and optimized
+- **Images**: Lazy loading support
+- **JavaScript**: Progressive enhancement
+
+Monitor performance using:
+- **Lighthouse**: Browser dev tools
+- **WebPageTest**: External performance testing
+- **GitHub Actions**: Automated performance checks
+
+## �📈 Repository Stats
 
 ![GitHub stars](https://img.shields.io/github/stars/Analytical-Guide/Datalake-Guide?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/Analytical-Guide/Datalake-Guide?style=social)

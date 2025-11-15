@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeStickyHeader();
     initializeSearch();
     initializeAccessibility();
+    initializeThemeToggle();
 });
 
 // Initialize syntax highlighting for dynamically loaded content
@@ -205,6 +206,30 @@ function initializeAccessibility() {
             }
         });
     });
+}
+
+// Initialize theme toggle functionality
+function initializeThemeToggle() {
+    const themeToggle = document.querySelector('.theme-toggle');
+    if (!themeToggle) return;
+
+    // Check for saved theme preference or default to 'light'
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    setTheme(savedTheme);
+
+    // Add click handler
+    themeToggle.addEventListener('click', function() {
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        setTheme(newTheme);
+        localStorage.setItem('theme', newTheme);
+    });
+
+    function setTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        themeToggle.classList.toggle('dark', theme === 'dark');
+        themeToggle.setAttribute('aria-label', `Switch to ${theme === 'light' ? 'dark' : 'light'} mode`);
+    }
 }
 
 // Generate table of contents for documentation pages
