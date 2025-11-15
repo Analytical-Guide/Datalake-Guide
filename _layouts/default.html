@@ -37,6 +37,9 @@
 </head>
 <body>
     <div class="container">
+        <!-- Skip to main content link -->
+        <a href="#main-content" class="skip-link">Skip to main content</a>
+        
         <!-- Header -->
         <header class="site-header">
             <nav class="main-nav">
@@ -63,7 +66,7 @@
         </header>
 
         <!-- Main Content -->
-        <main class="main-content">
+        <main class="main-content" id="main-content">
             {% if page.collection == 'docs' %}
             <nav class="breadcrumb">
                 <a href="{{ '/' | absolute_url }}">Home</a>

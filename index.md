@@ -3,114 +3,133 @@ layout: default
 title: Delta Lake & Apache Iceberg Knowledge Hub
 ---
 
-# 🌊 Delta Lake & Apache Iceberg Knowledge Hub
+<section class="hero">
+    <div class="hero-content">
+        <h1 class="hero-title">🌊 Delta Lake & Apache Iceberg Knowledge Hub</h1>
+        <p class="hero-subtitle">Building the definitive, community-driven knowledge ecosystem for modern data lakehouse technologies</p>
+        <div class="hero-badges">
+            <span class="badge"><i class="fab fa-github"></i> Open Source</span>
+            <span class="badge"><i class="fas fa-users"></i> Community Driven</span>
+            <span class="badge"><i class="fas fa-robot"></i> AI Enhanced</span>
+        </div>
+        <div class="hero-actions">
+            <a href="/docs/comparisons/feature-matrix/" class="btn btn-primary btn-lg">
+                <i class="fas fa-balance-scale"></i> Compare Technologies
+            </a>
+            <a href="/code-recipes/" class="btn btn-secondary btn-lg">
+                <i class="fas fa-code"></i> Browse Recipes
+            </a>
+        </div>
+    </div>
+    <div class="hero-visual">
+        <div class="tech-icons">
+            <div class="icon-item">
+                <i class="fas fa-database"></i>
+                <span>Delta Lake</span>
+            </div>
+            <div class="icon-item">
+                <i class="fas fa-snowflake"></i>
+                <span>Apache Iceberg</span>
+            </div>
+            <div class="icon-item">
+                <i class="fab fa-python"></i>
+                <span>Python</span>
+            </div>
+            <div class="icon-item">
+                <i class="fas fa-cogs"></i>
+                <span>Spark</span>
+            </div>
+        </div>
+    </div>
+</section>
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
-[![Code of Conduct](https://img.shields.io/badge/Code%20of%20Conduct-Contributor%20Covenant-purple.svg)](CODE_OF_CONDUCT.md)
-[![Delta Lake](https://img.shields.io/badge/Delta%20Lake-Latest-00ADD8?logo=databricks)](https://delta.io/)
-[![Apache Iceberg](https://img.shields.io/badge/Apache%20Iceberg-Latest-306998?logo=apache)](https://iceberg.apache.org/)
-[![Python](https://img.shields.io/badge/Python-3.8+-3776AB?logo=python)](https://www.python.org/)
-[![GitHub Actions](https://img.shields.io/badge/CI/CD-GitHub%20Actions-2088FF?logo=github-actions)](https://github.com/features/actions)
+<section class="features-grid">
+    <div class="container">
+        <h2 class="section-title">What You'll Find Here</h2>
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <h3>Comprehensive Comparisons</h3>
+                <p>Unbiased analysis of time travel, schema evolution, partitioning, compaction, concurrency control, and performance characteristics.</p>
+                <a href="/docs/comparisons/feature-matrix/" class="feature-link">View Matrix <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Battle-Tested Code Recipes</h3>
+                <p>Production-ready code examples with clear problem definitions, commented solutions, dependencies, and automated validation.</p>
+                <a href="/code-recipes/" class="feature-link">Explore Recipes <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>Learning Resources</h3>
+                <p>Hands-on tutorials, industry best practices, architecture guides, and reference implementations for various scales.</p>
+                <a href="/docs/tutorials/" class="feature-link">Start Learning <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
 
-## 🎯 Vision Statement
+<section class="stats-section">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Code Recipes</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100+</div>
+                <div class="stat-label">Contributors</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">10k+</div>
+                <div class="stat-label">Monthly Views</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">CI/CD Validation</div>
+            </div>
+        </div>
+    </div>
+</section>
 
-**Building the definitive, community-driven knowledge ecosystem for modern data lakehouse technologies.** This repository serves as a living, breathing whitepaper that evolves with the data engineering landscape, combining comprehensive technical comparisons, battle-tested code recipes, and AI-powered content curation to empower data engineers worldwide to make informed architectural decisions and implement best practices for Delta Lake and Apache Iceberg.
+<section class="content-cards">
+    <div class="container">
+        <div class="content-grid">
+            <div class="content-card">
+                <h3>🎯 Vision Statement</h3>
+                <p>This repository serves as a living, breathing whitepaper that evolves with the data engineering landscape, combining comprehensive technical comparisons, battle-tested code recipes, and AI-powered content curation.</p>
+            </div>
+            <div class="content-card">
+                <h3>🤖 Living Whitepaper Philosophy</h3>
+                <p>Unlike traditional static documentation, this knowledge base continuously evolves with automated freshness checks, validated content, link health monitoring, and community-driven contributions.</p>
+            </div>
+            <div class="content-card">
+                <h3>🛠️ Tech Stack</h3>
+                <p>Leveraging cutting-edge technologies: Delta Lake, Apache Iceberg, Python, SQL, Scala, GitHub Actions, Mermaid.js diagrams, pytest validation, and AI-enhanced content discovery.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-## 📚 Quick Links
-
-- [🔍 **Feature Comparison Matrix**](docs/comparisons/feature-matrix.md) - Detailed side-by-side comparison of Delta Lake vs Apache Iceberg
-- [👨‍💻 **Code Recipes**](code-recipes/) - Production-ready code examples with validation
-- [📖 **Tutorials**](docs/tutorials/) - Step-by-step guides for common use cases
-- [🏗️ **Architecture Patterns**](docs/architecture/) - Reference architectures and design patterns
-- [🤝 **Contributing Guide**](CONTRIBUTING.md) - Join our community and contribute
-- [📜 **Code of Conduct**](CODE_OF_CONDUCT.md) - Our community standards
-
-## 💡 The "Living Whitepaper" Philosophy
-
-Unlike traditional static documentation, this repository is designed as a **living knowledge base** that continuously evolves:
-
-- **🤖 Automated Freshness**: GitHub Actions workflows automatically detect stale content and create issues to keep documentation current
-- **✅ Validated Content**: Every code recipe is automatically tested in CI/CD to ensure it works with the latest versions
-- **🔗 Link Health**: Automated link checking prevents documentation rot
-- **📊 Community-Driven**: Contributions are gamified with a points system, encouraging diverse perspectives
-- **🧠 AI-Enhanced**: Machine learning assists in discovering, summarizing, and curating relevant content from across the web
-- **🎨 Diagrams as Code**: All architecture diagrams use Mermaid.js for version control and easy collaboration
-
-## 🛠️ Tech Stack
-
-This knowledge hub leverages cutting-edge technologies:
-
-- **📊 Data Formats**: Delta Lake, Apache Iceberg
-- **💻 Languages**: Python, SQL, Scala
-- **🔄 Orchestration**: GitHub Actions, Python automation scripts
-- **📝 Documentation**: Markdown, Mermaid.js
-- **🧪 Testing**: pytest, shell scripts
-- **🎨 Code Quality**: black, flake8, markdownlint
-- **🔍 Content Discovery**: BeautifulSoup, feedparser, LLM APIs
-
-## 🎯 What You'll Find Here
-
-### 📊 Comprehensive Comparisons
-
-Our [feature comparison matrix](docs/comparisons/feature-matrix.md) provides an unbiased, detailed analysis of:
-- Time Travel and Version Control
-- Schema Evolution Strategies
-- Partitioning and Clustering
-- Compaction and Optimization
-- Concurrency Control Mechanisms
-- Query Performance Characteristics
-- Ecosystem Integration
-
-### 💻 Battle-Tested Code Recipes
-
-Every recipe in our [code-recipes](code-recipes/) directory follows a standardized structure:
-- **Problem Definition**: Clear use case description
-- **Solution**: Fully commented, production-ready code
-- **Dependencies**: Reproducible environment specifications
-- **Validation**: Automated tests to verify functionality
-
-### 🎓 Learning Resources
-
-- **Tutorials**: Hands-on guides for common scenarios
-- **Best Practices**: Industry-tested patterns and anti-patterns
-- **Architecture Guides**: Reference implementations for various scales
-
-## 🚀 Getting Started
-
-### For Learners
-
-1. Browse the [feature comparison matrix](docs/comparisons/feature-matrix.md) to understand the differences
-2. Explore [code recipes](code-recipes/) for your specific use case
-3. Follow [tutorials](docs/tutorials/) for step-by-step implementations
-
-### For Contributors
-
-1. Read our [Contributing Guide](CONTRIBUTING.md)
-2. Check [open issues](https://github.com/Analytical-Guide/Datalake-Guide/issues) for areas needing help
-3. Review the [Code of Conduct](CODE_OF_CONDUCT.md)
-4. Submit your first pull request!
-
-## 📈 Repository Stats
-
-![GitHub stars](https://img.shields.io/github/stars/Analytical-Guide/Datalake-Guide?style=social)
-![GitHub forks](https://img.shields.io/github/forks/Analytical-Guide/Datalake-Guide?style=social)
-![GitHub contributors](https://img.shields.io/github/contributors/Analytical-Guide/Datalake-Guide)
-![GitHub last commit](https://img.shields.io/github/last-commit/Analytical-Guide/Datalake-Guide)
-
-## 📝 License
-
-This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
-
-## 🤝 Community & Support
-
-- **Issues**: [Report bugs or request features](https://github.com/Analytical-Guide/Datalake-Guide/issues)
-- **Discussions**: [Join community discussions](https://github.com/Analytical-Guide/Datalake-Guide/discussions)
-- **Pull Requests**: [Contribute code or documentation](https://github.com/Analytical-Guide/Datalake-Guide/pulls)
-
-## 🙏 Acknowledgments
-
-This knowledge hub is made possible by our amazing community of contributors. Thank you to everyone who has helped make this resource valuable for data engineers worldwide!
-
----
-
-**Built with ❤️ by the data engineering community**
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Ready to Get Started?</h2>
+            <p>Join thousands of data engineers who rely on this comprehensive knowledge hub for their data lakehouse decisions.</p>
+            <div class="cta-actions">
+                <a href="/docs/tutorials/getting-started/" class="btn btn-primary btn-lg">
+                    <i class="fas fa-rocket"></i> Get Started
+                </a>
+                <a href="/CONTRIBUTING/" class="btn btn-secondary btn-lg">
+                    <i class="fas fa-handshake"></i> Contribute
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

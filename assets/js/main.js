@@ -6,6 +6,15 @@ document.addEventListener('DOMContentLoaded', function() {
         Prism.highlightAll();
     }
 
+    // Mobile navigation toggle
+    initializeMobileNav();
+    
+    // Scroll animations
+    initializeScrollAnimations();
+    
+    // Enhanced copy-to-clipboard functionality
+    initializeCopyToClipboard();
+
     // Add smooth scrolling for anchor links
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
     anchorLinks.forEach(link => {
@@ -23,7 +32,82 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Add copy-to-clipboard functionality for code blocks
+    // Add table of contents generation for docs pages
+    if (document.querySelector('.content')) {
+        generateTableOfContents();
+    }
+
+    // Add search functionality (placeholder for future implementation)
+    initializeSearch();
+});
+
+// Mobile navigation functionality
+function initializeMobileNav() {
+    const navToggle = document.createElement('button');
+    navToggle.className = 'nav-toggle';
+    navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+    navToggle.setAttribute('aria-label', 'Toggle navigation menu');
+    navToggle.setAttribute('aria-expanded', 'false');
+    
+    const nav = document.querySelector('.main-nav');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (nav && navLinks) {
+        nav.insertBefore(navToggle, navLinks);
+        
+        navToggle.addEventListener('click', function() {
+            const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+            navToggle.setAttribute('aria-expanded', !isExpanded);
+            navLinks.classList.toggle('nav-open');
+            
+            // Update icon
+            navToggle.innerHTML = isExpanded ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
+        });
+        
+        // Close mobile nav when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!nav.contains(e.target) && navLinks.classList.contains('nav-open')) {
+                navToggle.setAttribute('aria-expanded', 'false');
+                navLinks.classList.remove('nav-open');
+                navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+        
+        // Close mobile nav on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && navLinks.classList.contains('nav-open')) {
+                navToggle.setAttribute('aria-expanded', 'false');
+                navLinks.classList.remove('nav-open');
+                navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+    }
+}
+
+// Scroll animations using Intersection Observer
+function initializeScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+            }
+        });
+    }, observerOptions);
+    
+    // Observe elements for animation
+    const animateElements = document.querySelectorAll('.feature-card, .content-card, .stat-item');
+    animateElements.forEach(element => {
+        observer.observe(element);
+    });
+}
+
+// Enhanced copy-to-clipboard functionality
+function initializeCopyToClipboard() {
     const codeBlocks = document.querySelectorAll('pre code');
     codeBlocks.forEach(block => {
         const pre = block.parentNode;
@@ -33,6 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
         copyButton.className = 'copy-button';
         copyButton.innerHTML = '<i class="fas fa-copy"></i>';
         copyButton.title = 'Copy to clipboard';
+        copyButton.setAttribute('aria-label', 'Copy code to clipboard');
 
         // Add button to pre element
         pre.style.position = 'relative';
@@ -45,23 +130,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Show success feedback
                 copyButton.innerHTML = '<i class="fas fa-check"></i>';
                 copyButton.classList.add('copied');
+                copyButton.setAttribute('aria-label', 'Code copied to clipboard');
 
                 setTimeout(() => {
                     copyButton.innerHTML = '<i class="fas fa-copy"></i>';
                     copyButton.classList.remove('copied');
+                    copyButton.setAttribute('aria-label', 'Copy code to clipboard');
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Failed to copy text: ', err);
+                copyButton.innerHTML = '<i class="fas fa-exclamation-triangle"></i>';
+                setTimeout(() => {
+                    copyButton.innerHTML = '<i class="fas fa-copy"></i>';
                 }, 2000);
             });
         });
     });
-
-    // Add table of contents generation for docs pages
-    if (document.querySelector('.content')) {
-        generateTableOfContents();
-    }
-
-    // Add search functionality (placeholder for future implementation)
-    initializeSearch();
-});
+}
 
 // Generate table of contents for documentation pages
 function generateTableOfContents() {
