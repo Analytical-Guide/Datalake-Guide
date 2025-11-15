@@ -16,5 +16,23 @@
         "pr_number": 1
       }
     ]
+  },
+  {
+    "username": "moshesham",
+    "points": 3,
+    "contributions": {
+      "prs_merged": 0,
+      "reviews": 0,
+      "issues_closed": 1,
+      "discussions": 0
+    },
+    "recent_activity": [
+      {
+        "type": "ISSUE_CLOSED",
+        "points": 3,
+        "timestamp": "",
+        "issue_number": 3
+      }
+    ]
   }
 ]
