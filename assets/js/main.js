@@ -1,21 +1,27 @@
 // Main JavaScript for Delta Lake & Apache Iceberg Knowledge Hub
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize syntax highlighting for dynamically loaded content
+    // Initialize all components
+    initializeSyntaxHighlighting();
+    initializeSmoothScrolling();
+    initializeCopyToClipboard();
+    initializeTableOfContents();
+    initializeMobileNavigation();
+    initializeScrollAnimations();
+    initializeStickyHeader();
+    initializeSearch();
+    initializeAccessibility();
+});
+
+// Initialize syntax highlighting for dynamically loaded content
+function initializeSyntaxHighlighting() {
     if (typeof Prism !== 'undefined') {
         Prism.highlightAll();
     }
+}
 
-    // Mobile navigation toggle
-    initializeMobileNav();
-    
-    // Scroll animations
-    initializeScrollAnimations();
-    
-    // Enhanced copy-to-clipboard functionality
-    initializeCopyToClipboard();
-
-    // Add smooth scrolling for anchor links
+// Add smooth scrolling for anchor links
+function initializeSmoothScrolling() {
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
     anchorLinks.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -31,82 +37,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-
-    // Add table of contents generation for docs pages
-    if (document.querySelector('.content')) {
-        generateTableOfContents();
-    }
-
-    // Add search functionality (placeholder for future implementation)
-    initializeSearch();
-});
-
-// Mobile navigation functionality
-function initializeMobileNav() {
-    const navToggle = document.createElement('button');
-    navToggle.className = 'nav-toggle';
-    navToggle.innerHTML = '<i class="fas fa-bars"></i>';
-    navToggle.setAttribute('aria-label', 'Toggle navigation menu');
-    navToggle.setAttribute('aria-expanded', 'false');
-    
-    const nav = document.querySelector('.main-nav');
-    const navLinks = document.querySelector('.nav-links');
-    
-    if (nav && navLinks) {
-        nav.insertBefore(navToggle, navLinks);
-        
-        navToggle.addEventListener('click', function() {
-            const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
-            navToggle.setAttribute('aria-expanded', !isExpanded);
-            navLinks.classList.toggle('nav-open');
-            
-            // Update icon
-            navToggle.innerHTML = isExpanded ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
-        });
-        
-        // Close mobile nav when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!nav.contains(e.target) && navLinks.classList.contains('nav-open')) {
-                navToggle.setAttribute('aria-expanded', 'false');
-                navLinks.classList.remove('nav-open');
-                navToggle.innerHTML = '<i class="fas fa-bars"></i>';
-            }
-        });
-        
-        // Close mobile nav on escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && navLinks.classList.contains('nav-open')) {
-                navToggle.setAttribute('aria-expanded', 'false');
-                navLinks.classList.remove('nav-open');
-                navToggle.innerHTML = '<i class="fas fa-bars"></i>';
-            }
-        });
-    }
 }
 
-// Scroll animations using Intersection Observer
-function initializeScrollAnimations() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
-            }
-        });
-    }, observerOptions);
-    
-    // Observe elements for animation
-    const animateElements = document.querySelectorAll('.feature-card, .content-card, .stat-item');
-    animateElements.forEach(element => {
-        observer.observe(element);
-    });
-}
-
-// Enhanced copy-to-clipboard functionality
+// Add copy-to-clipboard functionality for code blocks
 function initializeCopyToClipboard() {
     const codeBlocks = document.querySelectorAll('pre code');
     codeBlocks.forEach(block => {
@@ -139,11 +72,137 @@ function initializeCopyToClipboard() {
                 }, 2000);
             }).catch(function(err) {
                 console.error('Failed to copy text: ', err);
-                copyButton.innerHTML = '<i class="fas fa-exclamation-triangle"></i>';
+                copyButton.innerHTML = '<i class="fas fa-times"></i>';
                 setTimeout(() => {
                     copyButton.innerHTML = '<i class="fas fa-copy"></i>';
                 }, 2000);
             });
+        });
+    });
+}
+
+// Generate table of contents for documentation pages
+function initializeTableOfContents() {
+    if (document.querySelector('.content')) {
+        generateTableOfContents();
+    }
+}
+
+// Mobile navigation toggle functionality
+function initializeMobileNavigation() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (navToggle && navLinks) {
+        navToggle.addEventListener('click', function() {
+            const isHidden = navLinks.classList.contains('mobile-hidden');
+            navLinks.classList.toggle('mobile-hidden');
+
+            // Update aria-expanded
+            navToggle.setAttribute('aria-expanded', !isHidden);
+
+            // Update button text for screen readers
+            navToggle.setAttribute('aria-label', isHidden ? 'Close navigation menu' : 'Open navigation menu');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
+                navLinks.classList.add('mobile-hidden');
+                navToggle.setAttribute('aria-expanded', 'false');
+                navToggle.setAttribute('aria-label', 'Open navigation menu');
+            }
+        });
+
+        // Close mobile menu on window resize
+        window.addEventListener('resize', debounce(function() {
+            if (window.innerWidth > 768) {
+                navLinks.classList.remove('mobile-hidden');
+            } else {
+                navLinks.classList.add('mobile-hidden');
+            }
+        }, 250));
+    }
+}
+
+// Scroll animations using Intersection Observer
+function initializeScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-fade-in-up');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Observe elements that should animate in
+    const animateElements = document.querySelectorAll('.feature-card, .content-card, .stat-item');
+    animateElements.forEach(element => {
+        observer.observe(element);
+    });
+}
+
+// Sticky header behavior
+function initializeStickyHeader() {
+    const header = document.querySelector('.site-header');
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', debounce(function() {
+        const currentScrollY = window.scrollY;
+
+        if (currentScrollY > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+
+        lastScrollY = currentScrollY;
+    }, 10));
+}
+
+// Enhanced accessibility features
+function initializeAccessibility() {
+    // Add skip link for keyboard navigation
+    const skipLink = document.createElement('a');
+    skipLink.href = '#main-content';
+    skipLink.className = 'skip-link sr-only';
+    skipLink.textContent = 'Skip to main content';
+    document.body.insertBefore(skipLink, document.body.firstChild);
+
+    // Add main content landmark
+    const mainContent = document.querySelector('main') || document.querySelector('.main-content');
+    if (mainContent) {
+        mainContent.id = 'main-content';
+        mainContent.setAttribute('role', 'main');
+    }
+
+    // Enhance focus management
+    const focusableElements = document.querySelectorAll('a, button, input, select, textarea, [tabindex]');
+    focusableElements.forEach(element => {
+        element.addEventListener('focus', function() {
+            this.classList.add('focused');
+        });
+        element.addEventListener('blur', function() {
+            this.classList.remove('focused');
+        });
+    });
+
+    // Add keyboard navigation for cards
+    const cards = document.querySelectorAll('.feature-card, .content-card');
+    cards.forEach(card => {
+        card.setAttribute('tabindex', '0');
+        card.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const link = card.querySelector('a');
+                if (link) link.click();
+            }
         });
     });
 }
@@ -157,6 +216,7 @@ function generateTableOfContents() {
 
     const toc = document.createElement('nav');
     toc.className = 'table-of-contents';
+    toc.setAttribute('aria-label', 'Table of contents');
     toc.innerHTML = '<h4>Table of Contents</h4><ul></ul>';
 
     const tocList = toc.querySelector('ul');
@@ -200,11 +260,11 @@ function initializeSearch() {
     // For now, it's a placeholder for future enhancement
     const searchInput = document.querySelector('.search-input');
     if (searchInput) {
-        searchInput.addEventListener('input', function(e) {
+        searchInput.addEventListener('input', debounce(function(e) {
             const query = e.target.value.toLowerCase();
             // Implement search logic here
             console.log('Search query:', query);
-        });
+        }, 300));
     }
 }
 
@@ -236,7 +296,7 @@ function handleError(error, context = 'An error occurred') {
     // Could show user-friendly error messages here
 }
 
-// Performance monitoring (basic)
+// Performance monitoring (enhanced)
 if ('performance' in window && 'mark' in window.performance) {
     performance.mark('page-load-start');
     window.addEventListener('load', () => {
@@ -244,5 +304,115 @@ if ('performance' in window && 'mark' in window.performance) {
         performance.measure('page-load', 'page-load-start', 'page-load-end');
         const measure = performance.getEntriesByName('page-load')[0];
         console.log(`Page load time: ${measure.duration}ms`);
+
+        // Monitor Core Web Vitals
+        if ('web-vitals' in window) {
+            webVitals.getCLS(console.log);
+            webVitals.getFID(console.log);
+            webVitals.getFCP(console.log);
+            webVitals.getLCP(console.log);
+            webVitals.getTTFB(console.log);
+        }
     });
 }
+
+// Add CSS for enhanced accessibility
+const style = document.createElement('style');
+style.textContent = `
+    .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 6px;
+        background: var(--color-primary);
+        color: white;
+        padding: 8px;
+        text-decoration: none;
+        border-radius: var(--radius-md);
+        z-index: 1000;
+        transition: top 0.3s;
+    }
+
+    .skip-link:focus {
+        top: 6px;
+    }
+
+    .focused {
+        outline: 3px solid var(--color-primary);
+        outline-offset: 2px;
+    }
+
+    .copy-button {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background: var(--color-bg-secondary);
+        border: 1px solid var(--color-bg-tertiary);
+        border-radius: var(--radius-md);
+        padding: 6px;
+        cursor: pointer;
+        opacity: 0;
+        transition: all var(--transition-fast);
+        color: var(--color-text-secondary);
+    }
+
+    pre:hover .copy-button {
+        opacity: 1;
+    }
+
+    .copy-button:hover {
+        background: var(--color-primary);
+        color: white;
+    }
+
+    .copy-button.copied {
+        background: var(--color-success);
+        color: white;
+    }
+
+    .table-of-contents {
+        background: var(--color-bg-secondary);
+        border: 1px solid var(--color-bg-tertiary);
+        border-radius: var(--radius-lg);
+        padding: var(--space-6);
+        margin: var(--space-6) 0;
+    }
+
+    .table-of-contents h4 {
+        margin-bottom: var(--space-4);
+        color: var(--color-text-primary);
+        font-size: var(--text-lg);
+    }
+
+    .table-of-contents ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .table-of-contents li {
+        margin-bottom: var(--space-2);
+    }
+
+    .table-of-contents a {
+        color: var(--color-text-secondary);
+        text-decoration: none;
+        padding: var(--space-1) 0;
+        display: block;
+        border-left: 3px solid transparent;
+        padding-left: var(--space-3);
+        transition: all var(--transition-fast);
+    }
+
+    .table-of-contents a:hover {
+        color: var(--color-primary);
+        border-left-color: var(--color-primary);
+        background: var(--color-bg-primary);
+    }
+
+    .toc-level-2 { margin-left: var(--space-4); }
+    .toc-level-3 { margin-left: var(--space-8); }
+    .toc-level-4 { margin-left: var(--space-12); }
+    .toc-level-5 { margin-left: var(--space-16); }
+    .toc-level-6 { margin-left: var(--space-20); }
+`;
+document.head.appendChild(style);

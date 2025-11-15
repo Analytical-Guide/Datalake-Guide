@@ -49,7 +49,10 @@
                         <span>{{ site.title }}</span>
                     </a>
                 </div>
-                <ul class="nav-links">
+                <button class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links mobile-hidden">
                     <li><a href="{{ '/' | absolute_url }}">Home</a></li>
                     <li><a href="{{ '/docs/comparisons/feature-matrix/' | absolute_url }}">Compare</a></li>
                     <li><a href="{{ '/code-recipes/' | absolute_url }}">Recipes</a></li>
