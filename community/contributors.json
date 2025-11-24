@@ -1,29 +1,5 @@
 [
   {
-    "username": "Copilot",
-    "points": 75,
-    "contributions": {
-      "prs_merged": 2,
-      "reviews": 0,
-      "issues_closed": 0,
-      "discussions": 0
-    },
-    "recent_activity": [
-      {
-        "type": "PR_MERGED_MEDIUM",
-        "points": 25,
-        "timestamp": "",
-        "pr_number": 2
-      },
-      {
-        "type": "PR_MERGED_LARGE",
-        "points": 50,
-        "timestamp": "",
-        "pr_number": 1
-      }
-    ]
-  },
-  {
     "username": "moshesham",
     "points": 13,
     "contributions": {
