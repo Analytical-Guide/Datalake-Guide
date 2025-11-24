@@ -25,14 +25,20 @@
   },
   {
     "username": "moshesham",
-    "points": 3,
+    "points": 13,
     "contributions": {
-      "prs_merged": 0,
+      "prs_merged": 1,
       "reviews": 0,
       "issues_closed": 1,
       "discussions": 0
     },
     "recent_activity": [
+      {
+        "type": "PR_MERGED_SMALL",
+        "points": 10,
+        "timestamp": "",
+        "pr_number": 5
+      },
       {
         "type": "ISSUE_CLOSED",
         "points": 3,
