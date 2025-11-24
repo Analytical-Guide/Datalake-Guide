@@ -26,7 +26,9 @@ class QuizEngine {
             leaderboard: document.getElementById('leaderboard'),
             submitScoreBtn: document.getElementById('submit-score-btn'),
             retakeBtn: document.getElementById('retake-btn'),
-            shareBtn: document.getElementById('share-btn')
+            shareBtn: document.getElementById('share-btn'),
+            liveRegion: document.getElementById('live-region'),
+            liveAssertive: document.getElementById('live-assertive')
         };
 
         this.init();
@@ -109,6 +111,7 @@ class QuizEngine {
         }
 
         this.updateProgress();
+        this.announce(`Question ${this.currentQuestionIndex + 1} of ${this.quizData.questions.length}`);
         this.updateNavigationButtons();
     }
 
@@ -116,6 +119,7 @@ class QuizEngine {
         this.userAnswers[this.currentQuestionIndex] = optionIndex;
         this.elements.nextBtn.disabled = false;
         this.saveProgress();
+        this.announce('Option selected');
     }
 
     nextQuestion() {
@@ -159,6 +163,7 @@ class QuizEngine {
         this.calculateScore();
         this.showResults();
         localStorage.removeItem('quiz-progress');
+        this.announceAssertive(`Quiz complete. Your score is ${this.score} out of ${this.quizData.questions.length}.`);
     }
 
     calculateScore() {
@@ -179,6 +184,25 @@ class QuizEngine {
 
         this.showResultsBreakdown();
         this.loadLeaderboard();
+    }
+
+    announce(message) {
+        if (this.elements.liveRegion) {
+            this.elements.liveRegion.textContent = '';
+            // Force DOM update for screen readers
+            setTimeout(() => {
+                this.elements.liveRegion.textContent = message;
+            }, 50);
+        }
+    }
+
+    announceAssertive(message) {
+        if (this.elements.liveAssertive) {
+            this.elements.liveAssertive.textContent = '';
+            setTimeout(() => {
+                this.elements.liveAssertive.textContent = message;
+            }, 50);
+        }
     }
 
     getScoreMessage() {

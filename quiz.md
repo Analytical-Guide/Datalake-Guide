@@ -19,7 +19,7 @@ description: Test your knowledge of Delta Lake and Apache Iceberg with our inter
     <div class="quiz-content">
         <div class="question-card" id="question-card">
             <h2 id="question-text">Loading question...</h2>
-            <div class="options" id="options">
+            <div class="options" id="options" role="radiogroup" aria-labelledby="question-text">
                 <!-- Options will be populated by JavaScript -->
             </div>
         </div>
@@ -65,5 +65,18 @@ description: Test your knowledge of Delta Lake and Apache Iceberg with our inter
     </div>
 </div>
 
-<script src="{{ '/assets/js/github-leaderboard.js' | absolute_url }}"></script>
-<script src="{{ '/assets/js/quiz-engine.js' | absolute_url }}"></script>
+<!-- Live regions for accessibility -->
+<div id="live-region" class="sr-only" aria-live="polite"></div>
+<div id="live-assertive" class="sr-only" aria-live="assertive"></div>
+
+<noscript>
+    <div class="content">
+        <h2>JavaScript Required for Quiz</h2>
+        <p>The interactive quiz requires JavaScript to be enabled in your browser. Please enable JavaScript and reload the page.</p>
+        <p>You can review the question bank directly here: <a href="{{ '/assets/js/quiz-data.json' | absolute_url }}">Quiz Questions (JSON)</a></p>
+    </div>
+    
+</noscript>
+
+<script defer src="{{ '/assets/js/github-leaderboard.js' | absolute_url }}"></script>
+<script defer src="{{ '/assets/js/quiz-engine.js' | absolute_url }}"></script>

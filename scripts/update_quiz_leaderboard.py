@@ -11,11 +11,15 @@ from datetime import datetime
 from github import Github
 from collections import defaultdict
 
-def parse_score_from_comment(comment_body):
-    """Parse quiz score from a comment body."""
-    score_match = re.search(r'QUIZ_SCORE:\s*(\d+)/10', comment_body)
-    name_match = re.search(r'NAME:\s*(.+)', comment_body)
-    time_match = re.search(r'TIME:\s*(.+)', comment_body)
+START_MARKER = "<!-- QUIZ_LEADERBOARD_START -->"
+END_MARKER = "<!-- QUIZ_LEADERBOARD_END -->"
+
+def parse_score_from_comment(comment):
+    """Parse quiz score from a comment object."""
+    body = comment.body or ""
+    score_match = re.search(r'QUIZ_SCORE:\s*(\d+)/10', body)
+    name_match = re.search(r'NAME:\s*(.+)', body)
+    time_match = re.search(r'TIME:\s*(.+)', body)
 
     if not score_match or not name_match:
         return None
@@ -33,7 +37,7 @@ def get_leaderboard_data(issue):
     scores = []
 
     for comment in issue.get_comments():
-        score_data = parse_score_from_comment(comment.body)
+        score_data = parse_score_from_comment(comment)
         if score_data:
             score_data['comment_id'] = comment.id
             scores.append(score_data)
@@ -44,30 +48,32 @@ def get_leaderboard_data(issue):
     return scores[:50]  # Top 50 scores
 
 def generate_leaderboard_markdown(scores):
-    """Generate markdown table for the leaderboard."""
+    """Generate marked markdown section for the leaderboard."""
     if not scores:
-        return """
-## Current Leaderboard
+        table = (
+            "| Rank | Name | Score | Time | Date | User |\n"
+            "|------|------|-------|------|------|------|\n"
+            "| - | No scores yet | - | - | - | - |\n"
+        )
+    else:
+        header = (
+            "| Rank | Name | Score | Time | Date | User |\n"
+            "|------|------|-------|------|------|------|\n"
+        )
+        rows = []
+        for i, score in enumerate(scores, 1):
+            date_str = datetime.fromisoformat(score['date']).strftime('%Y-%m-%d')
+            row = f"| {i} | {score['name']} | {score['score']}/10 | {score['time']} | {date_str} | @{score['user']} |"
+            rows.append(row)
+        table = header + "\n".join(rows) + "\n"
 
-| Rank | Name | Score | Time | Date | User |
-|------|------|-------|------|------|------|
-| - | No scores yet | - | - | - | - |
-"""
-
-    header = """
-## Current Leaderboard
-
-| Rank | Name | Score | Time | Date | User |
-|------|------|-------|------|------|------|
-"""
-
-    rows = []
-    for i, score in enumerate(scores, 1):
-        date_str = datetime.fromisoformat(score['date']).strftime('%Y-%m-%d')
-        row = f"| {i} | {score['name']} | {score['score']}/10 | {score['time']} | {date_str} | @{score['user']} |"
-        rows.append(row)
-
-    return header + '\n'.join(rows) + '\n'
+    section = (
+        f"{START_MARKER}\n"
+        f"## Current Leaderboard\n\n"
+        f"{table}"
+        f"{END_MARKER}"
+    )
+    return section
 
 def update_leaderboard_issue():
     """Main function to update the leaderboard issue."""
@@ -96,18 +102,19 @@ def update_leaderboard_issue():
         scores = get_leaderboard_data(issue)
         print(f"📈 Found {len(scores)} quiz scores")
 
-        # Generate new leaderboard markdown
-        leaderboard_md = generate_leaderboard_markdown(scores)
+        # Generate new leaderboard markdown section (with markers)
+        leaderboard_section = generate_leaderboard_markdown(scores)
 
-        # Update issue body
-        current_body = issue.body
-        # Replace the leaderboard section
-        updated_body = re.sub(
-            r'## Current Leaderboard.*?(?=\n##|\n###|\Z)',
-            leaderboard_md.strip(),
-            current_body,
-            flags=re.DOTALL
-        )
+        # Update issue body using markers
+        current_body = issue.body or ""
+        if START_MARKER in current_body and END_MARKER in current_body:
+            start_idx = current_body.index(START_MARKER)
+            end_idx = current_body.index(END_MARKER) + len(END_MARKER)
+            updated_body = current_body[:start_idx] + leaderboard_section + current_body[end_idx:]
+        else:
+            # Append section at the end if markers missing
+            sep = "\n\n" if not current_body.endswith("\n") else "\n"
+            updated_body = current_body + sep + leaderboard_section + "\n"
 
         if updated_body != current_body:
             issue.edit(body=updated_body)

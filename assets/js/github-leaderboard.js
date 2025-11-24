@@ -99,11 +99,13 @@ NAME: Data Engineer
 TIME: 180
 \`\`\`
 
+<!-- QUIZ_LEADERBOARD_START -->
 ## Current Leaderboard
 
 | Rank | Name | Score | Date | Time |
 |------|------|-------|------|------|
 | - | No scores yet | - | - | - |
+<!-- QUIZ_LEADERBOARD_END -->
 
 *This leaderboard is automatically updated when new scores are submitted.*
 `;

@@ -24,7 +24,7 @@ wheels/
 *.egg
 
 # Jupyter Notebook
-.ipynb_checkpoints
+.ipynb_checkpoints/
 
 # PySpark
 metastore_db/
@@ -46,9 +46,18 @@ metadata/
 *~
 .DS_Store
 
+# Jekyll
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
 # Logs
 *.log
 /tmp/
+
+# Images generated
+assets/images/generated/
 
 # Node modules (if using JS tools)
 node_modules/
@@ -57,11 +66,21 @@ node_modules/
 .env
 .env.local
 
+# Secrets
+.env*
+
 # Testing
 .pytest_cache/
 .coverage
 htmlcov/
 
+# Quiz leaderboard cache
+quiz_leaderboard_cache.json
+
 # Temporary files
 *.tmp
 *.temp
+
+# Ignore test output
+*.out
+*.err
