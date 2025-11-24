@@ -4,19 +4,26 @@ permalink: /docs/architecture/
 description: Reference architectures and system blueprints for running Delta Lake and Apache Iceberg at scale.
 ---
 
+
 # Architecture Patterns
 
 Adopt proven patterns to scale your Lakehouse with confidence.
 
 <div class="card-grid">
-  <a class="card" href="{{ '/docs/blueprint/' | relative_url }}">
+  <div class="card">
     <h3>Knowledge Hub Blueprint</h3>
-    <p>End-to-end view of the automations, integrations, and governance powering this repository.</p>
-    <span class="card-cta">Study blueprint →</span>
-  </a>
-  <a class="card" href="{{ '/docs/architecture/system-overview/' | relative_url }}">
+    <p>End-to-end view of automations, integrations, and governance powering this repository.</p>
+    <div class="card-cta-group">
+      <a class="card-cta" href="{{ '/docs/blueprint/' | relative_url }}">Study blueprint →</a>
+      <a class="card-cta" href="{{ '/docs/architecture/system-overview/' | relative_url }}">System overview</a>
+    </div>
+  </div>
+  <div class="card">
     <h3>System Overview</h3>
-    <p>Diagram-driven explanation of each subsystem, from content ingestion to community gamification.</p>
-    <span class="card-cta">Explore system →</span>
-  </a>
+    <p>Diagram-driven explanation of each subsystem, from content ingestion to gamification.</p>
+    <div class="card-cta-group">
+      <a class="card-cta" href="{{ '/docs/architecture/system-overview/' | relative_url }}">Explore system →</a>
+      <a class="card-cta" href="{{ '/docs/blueprint/' | relative_url }}">Back to blueprint</a>
+    </div>
+  </div>
 </div>
