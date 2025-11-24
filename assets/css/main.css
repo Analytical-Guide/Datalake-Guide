@@ -28,9 +28,9 @@ html {
   --color-bg-primary: #FEFEFE;     /* Warm white */
   --color-bg-secondary: #F8FAFC;   /* Light gray-blue */
   --color-bg-tertiary: #F1F5F9;    /* Slightly darker gray-blue */
-  --color-text-primary: #1E293B;   /* Slate gray */
-  --color-text-secondary: #475569; /* Medium slate */
-  --color-text-tertiary: #94A3B8;  /* Light slate */
+    --color-text-primary: #18181B;   /* Near-black for max contrast */
+    --color-text-secondary: #27272A; /* Darker slate for better contrast */
+    --color-text-tertiary: #71717A;  /* Medium slate */
 
   /* Success & Status Colors */
   --color-success: #10B981;        /* Emerald green */
@@ -316,9 +316,9 @@ body {
 
 /* Content Styling */
 .content {
-    max-width: 800px;
+    max-width: 600px;
     margin: 0 auto;
-    padding: var(--space-8) var(--space-6);
+    padding: var(--space-4) var(--space-2);
 }
 
 .content h1,
@@ -455,14 +455,15 @@ body {
 /* Buttons */
 .btn {
     display: inline-block;
-    padding: var(--space-3) var(--space-5);
-    border-radius: var(--radius-lg);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-md);
     text-decoration: none;
-    font-weight: var(--font-semibold);
-    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    font-size: var(--text-xs);
     transition: all var(--transition-base);
     border: none;
     cursor: pointer;
+    margin: 0 var(--space-1) var(--space-1) 0;
 }
 
 .btn-primary {
@@ -827,15 +828,15 @@ img[loading="lazy"] {
 .hero-cta {
     display: inline-flex;
     align-items: center;
-    gap: var(--space-3);
-    padding: var(--space-4) var(--space-8);
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
     background: var(--gradient-cta);
     color: white;
     text-decoration: none;
-    font-weight: var(--font-semibold);
-    font-size: var(--text-lg);
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-xl);
+    font-weight: var(--font-medium);
+    font-size: var(--text-xs);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
     transition: all var(--transition-base);
     position: relative;
     overflow: hidden;
@@ -876,8 +877,8 @@ img[loading="lazy"] {
 .feature-card {
     background: var(--gradient-card);
     border: 1px solid var(--color-bg-secondary);
-    border-radius: var(--radius-2xl);
-    padding: var(--space-10);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
     text-align: center;
     transition: all var(--transition-base);
     box-shadow: var(--shadow-sm);
@@ -975,8 +976,8 @@ img[loading="lazy"] {
 .content-card {
     background: var(--gradient-card);
     border: 1px solid var(--color-bg-secondary);
-    border-radius: var(--radius-xl);
-    padding: var(--space-8);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
     transition: all var(--transition-base);
     box-shadow: var(--shadow-sm);
     position: relative;
