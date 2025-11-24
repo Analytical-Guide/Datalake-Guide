@@ -1,0 +1,149 @@
+{
+  "title": "Delta Lake & Apache Iceberg Knowledge Quiz",
+  "description": "Test your understanding of modern data lakehouse technologies",
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the primary purpose of Delta Lake?",
+      "options": [
+        "To provide ACID transactions on data lakes",
+        "To compress data files automatically",
+        "To visualize data in real-time dashboards",
+        "To encrypt data at rest"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Delta Lake provides ACID transactions, scalable metadata handling, and unifies streaming and batch data processing on top of existing data lakes.",
+      "category": "fundamentals"
+    },
+    {
+      "id": 2,
+      "question": "Which of the following is a key feature of Apache Iceberg?",
+      "options": [
+        "Built-in machine learning capabilities",
+        "Schema evolution with full backward compatibility",
+        "Automatic data partitioning based on usage patterns",
+        "Real-time data streaming with sub-second latency"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Apache Iceberg supports schema evolution, allowing tables to evolve while maintaining full backward and forward compatibility.",
+      "category": "features"
+    },
+    {
+      "id": 3,
+      "question": "What does ACID stand for in the context of Delta Lake?",
+      "options": [
+        "Atomicity, Consistency, Isolation, Durability",
+        "Automated, Concurrent, Indexed, Distributed",
+        "Advanced, Compressed, Incremental, Dynamic",
+        "Asynchronous, Cached, Intelligent, Durable"
+      ],
+      "correctAnswer": 0,
+      "explanation": "ACID (Atomicity, Consistency, Isolation, Durability) ensures reliable database transactions, which Delta Lake brings to data lakes.",
+      "category": "fundamentals"
+    },
+    {
+      "id": 4,
+      "question": "Which file format does Delta Lake use for storing data?",
+      "options": [
+        "CSV files only",
+        "Parquet files with transaction logs",
+        "JSON files with metadata",
+        "Avro files with schema registry"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Delta Lake uses Parquet for data storage and maintains transaction logs in JSON format to track changes.",
+      "category": "technical"
+    },
+    {
+      "id": 5,
+      "question": "What is 'time travel' in Delta Lake?",
+      "options": [
+        "The ability to query data as it existed at previous points in time",
+        "Automatic data migration between time zones",
+        "Real-time data processing capabilities",
+        "Version control for data pipelines"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Time travel allows you to query historical versions of data using timestamps or version numbers.",
+      "category": "features"
+    },
+    {
+      "id": 6,
+      "question": "Which cloud storage systems does Apache Iceberg support?",
+      "options": [
+        "Only Amazon S3",
+        "S3, GCS, Azure Blob Storage, and HDFS",
+        "Only Google Cloud Storage",
+        "Only Azure Blob Storage"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Apache Iceberg supports multiple cloud storage systems including Amazon S3, Google Cloud Storage, Azure Blob Storage, and HDFS.",
+      "category": "technical"
+    },
+    {
+      "id": 7,
+      "question": "What is schema evolution in the context of data lakehouse technologies?",
+      "options": [
+        "Automatic schema generation from data",
+        "The ability to change table schemas without breaking existing queries",
+        "Migration from one database to another",
+        "Real-time schema validation"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Schema evolution allows tables to change structure (add/remove columns) while maintaining compatibility with existing data and queries.",
+      "category": "features"
+    },
+    {
+      "id": 8,
+      "question": "Which query engine can work with Delta Lake tables?",
+      "options": [
+        "Only Apache Spark",
+        "Spark, Presto, Athena, Redshift Spectrum, and Snowflake",
+        "Only Apache Hive",
+        "Only Databricks Runtime"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Delta Lake is query-engine agnostic and works with multiple engines including Spark, Presto, Athena, and others.",
+      "category": "technical"
+    },
+    {
+      "id": 9,
+      "question": "What is the main difference between Delta Lake and Apache Iceberg?",
+      "options": [
+        "Delta Lake is open-source, Iceberg is proprietary",
+        "Delta Lake originated from Databricks, Iceberg from Netflix",
+        "Delta Lake uses JSON logs, Iceberg uses Avro metadata",
+        "They serve the same purpose with different implementations"
+      ],
+      "correctAnswer": 3,
+      "explanation": "Both Delta Lake and Apache Iceberg solve similar problems but with different architectural approaches and ecosystems.",
+      "category": "comparison"
+    },
+    {
+      "id": 10,
+      "question": "Which of the following is NOT a benefit of using a data lakehouse approach?",
+      "options": [
+        "Unified analytics architecture",
+        "ACID transactions on data lakes",
+        "Automatic data cleansing",
+        "Schema enforcement and governance"
+      ],
+      "correctAnswer": 2,
+      "explanation": "While data lakehouses provide many benefits, automatic data cleansing is not inherently provided - it requires additional tooling.",
+      "category": "fundamentals"
+    }
+  ],
+  "scoring": {
+    "perfect": { "min": 10, "message": "Perfect! You're a data lakehouse expert! 🏆" },
+    "excellent": { "min": 8, "message": "Excellent knowledge! You're well-versed in data lakehouse technologies! 🌟" },
+    "good": { "min": 6, "message": "Good understanding! Keep exploring to master these technologies! 📚" },
+    "fair": { "min": 4, "message": "Fair knowledge. Consider reviewing the fundamentals! 🔍" },
+    "needs_improvement": { "min": 0, "message": "Keep learning! Check out our tutorials and documentation! 📖" }
+  },
+  "categories": {
+    "fundamentals": "Basic Concepts",
+    "features": "Key Features",
+    "technical": "Technical Details",
+    "comparison": "Delta vs Iceberg"
+  }
+}

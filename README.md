@@ -15,6 +15,7 @@
 
 - [🔍 **Feature Comparison Matrix**](docs/comparisons/feature-matrix.md) - Detailed side-by-side comparison of Delta Lake vs Apache Iceberg
 - [👨‍💻 **Code Recipes**](code-recipes/) - Production-ready code examples with validation
+- [🧠 **Knowledge Quiz**](quiz/) - Test your Delta Lake & Iceberg knowledge
 - [📖 **Tutorials**](docs/tutorials/) - Step-by-step guides for common use cases
 - [🏗️ **Architecture Patterns**](docs/architecture/) - Reference architectures and design patterns
 - [🤝 **Contributing Guide**](CONTRIBUTING.md) - Join our community and contribute

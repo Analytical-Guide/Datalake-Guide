@@ -83,6 +83,18 @@ title: Delta Lake & Apache Iceberg Knowledge Hub
 
     <div class="feature-card">
         <div class="feature-icon">
+            <i class="fas fa-brain"></i>
+        </div>
+        <h3 class="feature-title">Knowledge Quiz</h3>
+        <p class="feature-description">Test your understanding of Delta Lake and Apache Iceberg with our interactive quiz and compete on the leaderboard.</p>
+        <a href="quiz/" class="feature-link">
+            <span>Take Quiz</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <div class="feature-card">
+        <div class="feature-icon">
             <i class="fas fa-users"></i>
         </div>
         <h3 class="feature-title">Community Driven</h3>
