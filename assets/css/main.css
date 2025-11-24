@@ -649,8 +649,8 @@ body {
     color: white;
     padding: var(--space-2) var(--space-4);
     text-decoration: none;
-    border-radius: var(--radius-md);
-    font-weight: var(--font-semibold);
+        background: var(--gradient-card);
+        color: var(--color-text-secondary);
     z-index: 10000;
     transition: top var(--transition-fast);
 }
@@ -752,7 +752,7 @@ img[loading="lazy"] {
 /* Hero Section */
 .hero {
     background: var(--gradient-hero);
-    color: white;
+    color: var(--color-text-primary);
     padding: var(--space-16) 0 var(--space-12) 0;
     text-align: center;
     position: relative;
@@ -760,14 +760,7 @@ img[loading="lazy"] {
 }
 
 .hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    pointer-events: none;
+    display: none;
 }
 
 .hero-content {
@@ -784,12 +777,8 @@ img[loading="lazy"] {
     font-weight: 900;
     line-height: var(--leading-tight);
     margin-bottom: var(--space-6);
-    color: white;
-    text-shadow:
-        0 2px 4px rgba(0, 0, 0, 0.7),
-        0 4px 8px rgba(0, 0, 0, 0.5),
-        0 8px 16px rgba(0, 0, 0, 0.3),
-        0 0 20px rgba(0, 0, 0, 0.5);
+    color: var(--color-primary-dark);
+    text-shadow: none;
     letter-spacing: -0.02em;
 }
 
@@ -799,8 +788,8 @@ img[loading="lazy"] {
     font-weight: 300;
     line-height: var(--leading-relaxed);
     margin-bottom: var(--space-8);
-    color: rgba(255, 255, 255, 0.95);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    color: var(--color-text-secondary);
+    text-shadow: none;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
@@ -885,13 +874,13 @@ img[loading="lazy"] {
 }
 
 .feature-card {
-    background: var(--color-bg-primary);
-    border: 1px solid var(--color-bg-tertiary);
-    border-radius: var(--radius-xl);
-    padding: var(--space-8);
+    background: var(--gradient-card);
+    border: 1px solid var(--color-bg-secondary);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-10);
     text-align: center;
     transition: all var(--transition-base);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-sm);
     position: relative;
     overflow: hidden;
 }
@@ -984,10 +973,10 @@ img[loading="lazy"] {
 }
 
 .content-card {
-    background: var(--color-bg-primary);
-    border: 1px solid var(--color-bg-tertiary);
-    border-radius: var(--radius-lg);
-    padding: var(--space-6);
+    background: var(--gradient-card);
+    border: 1px solid var(--color-bg-secondary);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
     transition: all var(--transition-base);
     box-shadow: var(--shadow-sm);
     position: relative;
