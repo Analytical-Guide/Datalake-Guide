@@ -82,6 +82,17 @@ Comprehensive guide covering Iceberg architecture, design decisions, and best pr
 - [Dremio](https://www.dremio.com/) - Iceberg-native query engine
 - [Athena](https://aws.amazon.com/athena/) - AWS-managed, supports both
 
+### AI-Powered Research Tools
+
+- [Google NotebookLM](https://notebooklm.google.com/) - AI-powered research assistant for analyzing documents, PDFs, and notes
+  - **Community Notebook**: [Delta Lake & Iceberg Research Collection](https://notebooklm.google.com/notebook/b8408713-4c3f-43c2-9c7e-048049727e8d) - A curated collection of research materials about Delta Lake and Apache Iceberg (Note: Access may require permission from the notebook owner)
+  - **Note**: NotebookLM notebooks are private by default. To access shared content, the notebook owner must grant access or export summaries/insights
+  - **Access Methods**:
+    - Request access from the notebook owner
+    - For enterprise users: [NotebookLM Enterprise API](https://cloud.google.com/gemini/docs/notebooklm-enterprise) provides programmatic access
+    - Manual export: Notebook owners can share generated summaries, study guides, or audio overviews
+  - **Use Cases**: Synthesizing research papers, creating study guides, generating insights from Delta Lake and Iceberg documentation
+
 ## 🏢 Case Studies
 
 ### Delta Lake
