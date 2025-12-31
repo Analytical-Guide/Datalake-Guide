@@ -10,6 +10,9 @@ github_username: Analytical-Guide
 author: "Analytical Guide Community"
 email: "community@analytical-guide.com"
 
+# Analytics (set to your GA4 measurement ID, e.g., G-XXXXXXXXXX)
+google_analytics: "G-LHTGZTRTCX"
+
 # Build settings
 markdown: kramdown
 highlighter: rouge
@@ -30,6 +33,7 @@ include:
   - community
   - _layouts
   - _includes
+  - _data
   - assets
 
 # Exclude files
