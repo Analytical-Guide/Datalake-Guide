@@ -1,5 +1,23 @@
 [
   {
+    "username": "Copilot",
+    "points": 50,
+    "contributions": {
+      "prs_merged": 1,
+      "reviews": 0,
+      "issues_closed": 0,
+      "discussions": 0
+    },
+    "recent_activity": [
+      {
+        "type": "PR_MERGED_LARGE",
+        "points": 50,
+        "timestamp": "",
+        "pr_number": 7
+      }
+    ]
+  },
+  {
     "username": "moshesham",
     "points": 13,
     "contributions": {
