@@ -7,9 +7,36 @@
 [![Python](https://img.shields.io/badge/Python-3.8+-3776AB?logo=python)](https://www.python.org/)
 [![GitHub Actions](https://img.shields.io/badge/CI/CD-GitHub%20Actions-2088FF?logo=github-actions)](https://github.com/features/actions)
 
+## 🌐 GitHub Pages
+
+The GitHub Pages for this repository is available at: **[Delta Lake & Apache Iceberg Knowledge Hub](https://analytical-guide.github.io/Datalake-Guide/)**
+
 ## 🎯 Vision Statement
 
 **Building the definitive, community-driven knowledge ecosystem for modern data lakehouse technologies.** This repository serves as a living, breathing whitepaper that evolves with the data engineering landscape, combining comprehensive technical comparisons, battle-tested code recipes, and AI-powered content curation to empower data engineers worldwide to make informed architectural decisions and implement best practices for Delta Lake and Apache Iceberg.
+
+## 📁 Repository Content and Structure
+
+This repository is organized into the following sections:
+
+### Core Content
+
+| Section | Location | Description |
+|---------|----------|-------------|
+| **Feature Matrix** | [`docs/comparisons/feature-matrix.md`](docs/comparisons/feature-matrix.md) | Comprehensive comparison of Delta Lake vs Apache Iceberg |
+| **Code Recipes** | [`code-recipes/`](code-recipes/) | Production-ready code examples with validation |
+| **Tutorials** | [`docs/tutorials/`](docs/tutorials/) | Step-by-step guides for common use cases |
+| **Architecture** | [`docs/architecture/`](docs/architecture/) | Reference architectures and design patterns |
+| **Best Practices** | [`docs/best-practices/`](docs/best-practices/) | Industry-tested patterns and recommendations |
+
+### Learning Resources
+
+| Resource | Location | Description |
+|----------|----------|-------------|
+| **Getting Started** | [`docs/tutorials/getting-started.md`](docs/tutorials/getting-started.md) | Quick start guide for beginners |
+| **Migration Guide** | [`docs/tutorials/migration-guide.md`](docs/tutorials/migration-guide.md) | Moving from legacy systems |
+| **Knowledge Quiz** | [`quiz/`](quiz/) | Test your Delta Lake & Iceberg knowledge |
+| **Design System** | [`docs/design-system.md`](docs/design-system.md) | UI/UX guidelines for the project |
 
 ## 📚 Quick Links
 
@@ -72,6 +99,19 @@ Every recipe in our [code-recipes](code-recipes/) directory follows a standardiz
 - **Best Practices**: Industry-tested patterns and anti-patterns
 - **Architecture Guides**: Reference implementations for various scales
 
+## 🚀 How to Use This Material
+
+1. **Start with the Feature Comparison**: Begin by reading the [Feature Comparison Matrix](docs/comparisons/feature-matrix.md) for a comprehensive overview of Delta Lake vs Apache Iceberg.
+
+2. **Explore the Getting Started Guide**: Use the [Getting Started Tutorial](docs/tutorials/getting-started.md) to set up your first lakehouse.
+
+3. **Review Code Recipes**: Work through the [Code Recipes](code-recipes/) for hands-on implementation examples.
+
+4. **Follow Best Practices**: Study the [Best Practices](docs/best-practices/) for production-ready implementations.
+
+5. **Test Your Knowledge**: Take the [Knowledge Quiz](quiz/) to validate your understanding.
+
+6. **Visit the Website**: Explore the full content at [GitHub Pages](https://analytical-guide.github.io/Datalake-Guide/).
 
 ## 🚀 Getting Started
 
@@ -88,7 +128,7 @@ Every recipe in our [code-recipes](code-recipes/) directory follows a standardiz
 3. Review the [Code of Conduct](CODE_OF_CONDUCT.md)
 4. Submit your first pull request!
 
-## �️ Development & Deployment
+## 🛠️ Development & Deployment
 
 ### Prerequisites
 
@@ -291,7 +331,7 @@ Monitor performance using:
 - **WebPageTest**: External performance testing
 - **GitHub Actions**: Automated performance checks
 
-## �📈 Repository Stats
+## 📈 Repository Stats
 
 ![GitHub stars](https://img.shields.io/github/stars/Analytical-Guide/Datalake-Guide?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/Analytical-Guide/Datalake-Guide?style=social)
