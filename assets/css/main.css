@@ -2017,7 +2017,7 @@ img[loading="lazy"] {
 }
 
 #mark-complete-btn.completed:hover {
-    background: #0d9668;
+    filter: brightness(0.9);
 }
 
 /* ========================================

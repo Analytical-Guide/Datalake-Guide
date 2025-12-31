@@ -231,21 +231,34 @@
         document.addEventListener('DOMContentLoaded', function() {
             const searchInput = document.getElementById('search-input');
             const searchIcon = document.querySelector('.search-icon');
+            const SEARCH_BLUR_DELAY_MS = 200; // Delay to allow clicking on results before hiding
             
             if (searchInput) {
                 let searchData = [];
+                let searchDataLoaded = false;
                 
                 // Load search data
                 fetch('{{ "/search.json" | relative_url }}')
-                    .then(response => response.json())
-                    .then(data => {
-                        searchData = data;
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Failed to load search data');
+                        }
+                        return response.json();
                     })
-                    .catch(error => console.error('Error loading search data:', error));
+                    .then(data => {
+                        if (Array.isArray(data)) {
+                            searchData = data;
+                            searchDataLoaded = true;
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error loading search data:', error);
+                        searchDataLoaded = false;
+                    });
                 
                 // Search function
                 function performSearch(query) {
-                    if (!query.trim()) return [];
+                    if (!query.trim() || !searchDataLoaded) return [];
                     
                     const results = searchData.filter(item => {
                         const titleMatch = item.title && item.title.toLowerCase().includes(query.toLowerCase());
@@ -303,7 +316,7 @@
                 });
                 
                 searchInput.addEventListener('blur', function() {
-                    setTimeout(hideResults, 200); // Delay to allow clicking on results
+                    setTimeout(hideResults, SEARCH_BLUR_DELAY_MS);
                 });
                 
                 if (searchIcon) {
