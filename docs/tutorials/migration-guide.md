@@ -2,6 +2,8 @@
 title: Data Lake Migration Guide
 description: Strategies and checklists for migrating Parquet lakes to Delta Lake or Apache Iceberg with minimal risk.
 permalink: /docs/tutorials/migration-guide/
+estimated_time: 45 min
+difficulty: Intermediate
 ---
 
 # Data Lake Migration Guide: From Parquet to Delta Lake & Apache Iceberg

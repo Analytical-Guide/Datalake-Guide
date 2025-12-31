@@ -2,6 +2,8 @@
 title: Delta Lake vs Apache Iceberg Feature Comparison Matrix
 description: Comprehensive side-by-side comparison of capabilities across Delta Lake and Apache Iceberg.
 permalink: /docs/comparisons/feature-matrix/
+estimated_time: 20 min
+difficulty: Beginner
 ---
 
 # Delta Lake vs Apache Iceberg: Feature Comparison Matrix

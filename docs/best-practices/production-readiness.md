@@ -2,6 +2,8 @@
 title: Production Readiness for Delta Lake and Apache Iceberg
 description: Detailed checklist covering data organization, performance, operations, and governance for production deployments.
 permalink: /docs/best-practices/production-readiness/
+estimated_time: 25 min
+difficulty: Advanced
 ---
 
 # Production Readiness for Delta Lake and Apache Iceberg

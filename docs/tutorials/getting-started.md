@@ -2,6 +2,8 @@
 title: Getting Started with Delta Lake and Apache Iceberg
 description: Beginner-friendly tutorial that explains how to stand up and work with both table formats.
 permalink: /docs/tutorials/getting-started/
+estimated_time: 30 min
+difficulty: Beginner
 ---
 
 # Getting Started with Delta Lake and Apache Iceberg
