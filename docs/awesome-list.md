@@ -24,6 +24,22 @@ A curated list of articles, blog posts, videos, and resources about Delta Lake a
 
 ## Recent Articles
 
+### [Delta Lake 4.0](https://delta.io/blog/2025-09-25-delta-lake-40)
+
+*Discovered: 2026-01-18*
+
+New article about Delta Lake and Apache Iceberg.
+
+---
+
+### [Delta Lake 3.3](https://delta.io/blog/delta-lake-3-3)
+
+*Discovered: 2026-01-18*
+
+New article about Delta Lake and Apache Iceberg.
+
+---
+
 *This section is automatically updated by our resource aggregator bot. New articles are added weekly and reviewed by the community.*
 
 ### [Introducing Delta Lake 3.0](https://delta.io/blog/delta-lake-3-0/)
