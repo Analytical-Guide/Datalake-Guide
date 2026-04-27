@@ -127,12 +127,13 @@ Datalake-Guide/
 ├── LICENSE                # Apache 2.0
 │
 ├── .github/workflows/     # Automated CI/CD
-│   ├── ci-code-recipes.yml
-│   ├── ci-docs.yml
-│   ├── stale-content-bot.yml
-│   ├── gamification-engine.yml
-│   ├── update-leaderboard.yml
-│   └── awesome-list-aggregator.yml
+│   ├── ci-code-recipes.yml         # Validate code recipes on PR
+│   ├── ci-docs.yml                 # Lint, link-check, Mermaid validation on PR
+│   ├── stale-content-bot.yml       # Weekly: open issues for stale docs
+│   ├── gamification-engine.yml     # Points on PR/review/issue events
+│   ├── update-leaderboard.yml      # Daily: regenerate README leaderboard
+│   ├── update-quiz-leaderboard.yml # Update quiz scores in leaderboard issue
+│   └── awesome-list-aggregator.yml # Weekly: discover & commit new articles
 │
 ├── code-recipes/          # Executable examples
 │   ├── RECIPE_TEMPLATE.md
@@ -184,10 +185,15 @@ Datalake-Guide/
    - Updates README automatically
    - Commits and pushes changes
 
-5. **Resource Aggregation** (weekly):
-   - Discovers new articles from RSS feeds
-   - Generates AI summaries (if configured)
-   - Creates PR with new resources
+5. **Resource Aggregation** (weekly, Sunday):
+   - Discovers new articles from RSS feeds (delta.io, iceberg.apache.org, databricks.com)
+   - Scrapes trusted blog pages, deduplicates via processed URL history
+   - Generates AI summaries if `OPENAI_API_KEY` or `GEMINI_API_KEY` secrets are configured
+   - Commits new entries directly to `docs/awesome-list.md`
+
+6. **Quiz Leaderboard** (on issue comment or scheduled):
+   - Parses `QUIZ_SCORE:`, `NAME:`, and `TIME:` fields from issue comments
+   - Maintains a top-50 leaderboard in the issue body using HTML marker comments
 
 ## 🔧 Development Setup
 

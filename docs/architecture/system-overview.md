@@ -145,23 +145,26 @@ sequenceDiagram
 
 ```mermaid
 sequenceDiagram
-    participant Cron as Weekly Trigger
-    participant Agg as Aggregator
+    participant Cron as Weekly Trigger (Sun)
+    participant Agg as find_new_articles.py
     participant RSS as RSS Feeds
     participant Web as Websites
-    participant AI as AI Summary
-    participant PR as Pull Request
-    
+    participant AI as AI Summary (optional)
+    participant Repo as Repository
+
     Cron->>Agg: Start aggregation
-    Agg->>RSS: Fetch feeds
-    RSS-->>Agg: New articles
-    Agg->>Web: Scrape websites
+    Agg->>RSS: Fetch delta.io/blog/feed.xml
+    RSS-->>Agg: New entries
+    Agg->>RSS: Fetch iceberg.apache.org/feed.xml
+    RSS-->>Agg: New entries
+    Agg->>Web: Scrape delta.io/blog/
     Web-->>Agg: New links
-    Agg->>Agg: Filter by keywords
-    Agg->>AI: Generate summaries
-    AI-->>Agg: Summaries
-    Agg->>PR: Create PR
-    PR-->>Agg: PR created
+    Agg->>Agg: Filter by keywords & dedup via processed_urls.json
+    Agg->>AI: Generate summaries (if API key present)
+    AI-->>Agg: Summaries (or simple fallback)
+    Agg->>Repo: Update docs/awesome-list.md
+    Agg->>Repo: Update community/processed_urls.json
+    Repo->>Repo: git commit & push [skip ci]
 ```
 
 ## Component Architecture
