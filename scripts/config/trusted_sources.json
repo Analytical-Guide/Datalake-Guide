@@ -1,11 +1,12 @@
 {
   "rss_feeds": [
     "https://delta.io/blog/feed.xml",
+    "https://iceberg.apache.org/feed.xml",
     "https://www.databricks.com/blog/category/engineering/delta/feed"
   ],
   "websites": [
     "https://delta.io/blog/",
-    "https://iceberg.apache.org/blogs/"
+    "https://iceberg.apache.org/blog/"
   ],
   "keywords": [
     "delta lake",

@@ -48,7 +48,7 @@ def load_trusted_sources():
             ],
             "websites": [
                 "https://delta.io/blog/",
-                "https://iceberg.apache.org/blogs/",
+                "https://iceberg.apache.org/blog/",
             ],
         }
         
