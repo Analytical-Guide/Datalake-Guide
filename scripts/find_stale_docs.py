@@ -6,7 +6,7 @@ and create GitHub issues for review
 
 import os
 import sys
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 import subprocess
 from github import Github
@@ -15,7 +15,7 @@ from dateutil import parser as date_parser
 
 # Configuration
 STALE_THRESHOLD_MONTHS = 12
-DIRECTORIES_TO_CHECK = ["docs/", "tutorials/"]
+DIRECTORIES_TO_CHECK = ["docs/", "docs/tutorials/"]
 STALE_LABEL = "stale-content"
 ISSUE_TITLE_PREFIX = "[Stale Content] Review:"
 
@@ -76,6 +76,11 @@ def find_stale_files(stale_threshold_date):
             if last_modified is None:
                 print(f"⚠️  Could not determine last modified date for {filepath}")
                 continue
+            
+            if last_modified.tzinfo is None:
+                last_modified = last_modified.replace(tzinfo=timezone.utc)
+            else:
+                last_modified = last_modified.astimezone(timezone.utc)
             
             if last_modified < stale_threshold_date:
                 stale_files.append((filepath, last_modified))
@@ -154,7 +159,7 @@ def create_stale_issue(gh_repo, filepath, last_modified):
     issue_body = f"""## 📅 Stale Content Detected
 
 **File:** `{filepath}`  
-**Last Updated:** {last_modified.strftime('%Y-%m-%d')} ({(datetime.now() - last_modified).days} days ago)
+**Last Updated:** {last_modified.strftime('%Y-%m-%d')} ({age_days} days ago)
 
 ### 🔍 What to Do
 
@@ -247,7 +252,7 @@ def main():
     ensure_label_exists(gh_repo)
     
     # Calculate stale threshold date
-    stale_threshold_date = datetime.now() - timedelta(days=STALE_THRESHOLD_MONTHS * 30)
+    stale_threshold_date = datetime.now(timezone.utc) - timedelta(days=STALE_THRESHOLD_MONTHS * 30)
     print(f"📅 Stale threshold: {stale_threshold_date.date()} ({STALE_THRESHOLD_MONTHS} months)")
     
     # Find stale files
@@ -285,3 +290,9 @@ def main():
 
 if __name__ == "__main__":
     main()
+    if last_modified.tzinfo is None:
+        last_modified = last_modified.replace(tzinfo=timezone.utc)
+    else:
+        last_modified = last_modified.astimezone(timezone.utc)
+    age_days = (datetime.now(timezone.utc) - last_modified).days
+    
