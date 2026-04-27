@@ -290,9 +290,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    if last_modified.tzinfo is None:
-        last_modified = last_modified.replace(tzinfo=timezone.utc)
-    else:
-        last_modified = last_modified.astimezone(timezone.utc)
-    age_days = (datetime.now(timezone.utc) - last_modified).days
-    
