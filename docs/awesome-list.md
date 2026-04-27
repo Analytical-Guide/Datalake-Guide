@@ -26,19 +26,35 @@ A curated list of articles, blog posts, videos, and resources about Delta Lake a
 
 *This section is automatically updated by our resource aggregator bot. New articles are added weekly and reviewed by the community.*
 
-### [Introducing Delta Lake 3.0](https://delta.io/blog/delta-lake-3-0/)
+### [Delta Lake 3.2: Liquid Clustering and Improved Performance](https://delta.io/blog/delta-lake-3-2/)
 
-*Discovered: 2024-01-01*
+*Discovered: 2025-02-01*
 
-Delta Lake 3.0 brings significant improvements including better performance, enhanced schema evolution capabilities, and improved compatibility with Apache Spark 3.5.
+Delta Lake 3.2 introduces Liquid Clustering as a replacement for static partitioning and Z-ordering, automatically reorganizing data based on actual query patterns for improved performance without manual tuning.
 
 ---
 
-### [Apache Iceberg: The Definitive Guide](https://iceberg.apache.org/blogs/iceberg-guide/)
+### [Apache Iceberg 1.5: Row-Level Deletes and Merge-on-Read Improvements](https://iceberg.apache.org/docs/1.5.0/)
 
-*Discovered: 2024-01-01*
+*Discovered: 2025-01-15*
 
-Comprehensive guide covering Iceberg architecture, design decisions, and best practices for production deployments.
+Iceberg 1.5 ships significant performance improvements for Merge-on-Read tables, enhanced row-level delete efficiency, and expanded metadata statistics support for better query planning across all supported engines.
+
+---
+
+### [Choosing Between Delta Lake and Apache Iceberg in 2025](https://www.databricks.com/blog/delta-lake-vs-iceberg)
+
+*Discovered: 2025-03-10*
+
+A comprehensive comparison of both open table formats, covering ecosystem maturity, vendor support, hidden partitioning, streaming integration, and real-world migration experiences from Databricks and Netflix engineering teams.
+
+---
+
+### [Lakehouse Architecture with Apache Iceberg on AWS](https://aws.amazon.com/blogs/big-data/build-a-lakehouse-architecture-on-aws-using-apache-iceberg/)
+
+*Discovered: 2025-04-01*
+
+Step-by-step guide to building an AWS-native data lakehouse using Apache Iceberg with Amazon Athena, AWS Glue, and S3, covering catalog integration, partition management, and compaction automation.
 
 ---
 
@@ -57,8 +73,9 @@ Comprehensive guide covering Iceberg architecture, design decisions, and best pr
 
 ### Books
 
-- "Delta Lake: The Definitive Guide" by Denny Lee and Tristen Wentling
-- "Building the Data Lakehouse" by Bill Inmon, et al.
+- *Delta Lake: The Definitive Guide* — Denny Lee, Tristen Wentling, Prashanth Babu, Scott Haines (O'Reilly, 2023)
+- *Apache Iceberg: The Definitive Guide* — Tomer Shiran, Jason Hughes, Alex Merced (O'Reilly, 2024)
+- *Building the Data Lakehouse* — Bill Inmon, et al.
 
 ## 🛠️ Tools and Libraries
 
@@ -100,9 +117,10 @@ Comprehensive guide covering Iceberg architecture, design decisions, and best pr
 
 ## 📊 Comparisons and Benchmarks
 
-- [Feature Comparison Matrix](comparisons/feature-matrix.md) - Side-by-side comparison
-- [TPC-DS Benchmarks](https://www.databricks.com/blog/2023/04/14/delta-lake-3-0-performance.html) - Performance benchmarks
-- [Onehouse Benchmark](https://www.onehouse.ai/blog/apache-hudi-vs-delta-lake-vs-apache-iceberg-lakehouse-feature-comparison) - Multi-format comparison
+- [Feature Comparison Matrix](comparisons/feature-matrix.md) — In-depth side-by-side comparison (60+ criteria)
+- [TPC-DS Benchmarks](https://www.databricks.com/blog/2023/04/14/delta-lake-3-0-performance.html) — Delta Lake 3.0 performance results
+- [Onehouse Lakehouse Format Comparison](https://www.onehouse.ai/blog/apache-hudi-vs-delta-lake-vs-apache-iceberg-lakehouse-feature-comparison) — Delta, Iceberg, and Hudi compared
+- [Dremio: Open Table Formats in 2024](https://www.dremio.com/blog/comparison-of-data-lake-table-formats-apache-iceberg-apache-hudi-and-delta-lake/) — Practical comparison with real workloads
 
 ## 🎓 Courses and Training
 
@@ -175,5 +193,5 @@ This awesome list is part of the Delta Lake & Apache Iceberg Knowledge Hub, lice
 
 ---
 
-**Last Updated**: 2025-11-14  
+**Last Updated**: 2026-04-27  
 **Maintained By**: Community + AI Aggregator 🤖

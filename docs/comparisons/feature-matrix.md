@@ -449,7 +449,8 @@ Want to contribute? See our [Contributing Guide](../../CONTRIBUTING.md)!
 
 ## 🔄 Last Updated
 
-This matrix is automatically checked for freshness. Last human review: [CURRENT_DATE]
+This matrix is automatically checked for freshness. Last human review: 2026-04-27.
+Delta Lake version coverage: **3.2**. Apache Iceberg version coverage: **1.5**.
 
 ## 📖 References
 

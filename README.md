@@ -2,131 +2,124 @@
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Code of Conduct](https://img.shields.io/badge/Code%20of%20Conduct-Contributor%20Covenant-purple.svg)](CODE_OF_CONDUCT.md)
-[![Delta Lake](https://img.shields.io/badge/Delta%20Lake-Latest-00ADD8?logo=databricks)](https://delta.io/)
-[![Apache Iceberg](https://img.shields.io/badge/Apache%20Iceberg-Latest-306998?logo=apache)](https://iceberg.apache.org/)
+[![Delta Lake](https://img.shields.io/badge/Delta%20Lake-3.x-00ADD8?logo=databricks)](https://delta.io/)
+[![Apache Iceberg](https://img.shields.io/badge/Apache%20Iceberg-1.5+-306998?logo=apache)](https://iceberg.apache.org/)
 [![Python](https://img.shields.io/badge/Python-3.8+-3776AB?logo=python)](https://www.python.org/)
-[![GitHub Actions](https://img.shields.io/badge/CI/CD-GitHub%20Actions-2088FF?logo=github-actions)](https://github.com/features/actions)
+[![GitHub Actions](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-2088FF?logo=github-actions)](https://github.com/features/actions)
+[![GitHub Pages](https://img.shields.io/badge/Site-GitHub%20Pages-222222?logo=github)](https://analytical-guide.github.io/Datalake-Guide/)
 
-## 🌐 GitHub Pages
+> **The definitive, community-driven reference for modern data lakehouse engineering** — comparing Delta Lake and Apache Iceberg with production-tested recipes, automated freshness tracking, and weekly AI-powered content discovery.
 
-The GitHub Pages for this repository is available at: **[Delta Lake & Apache Iceberg Knowledge Hub](https://analytical-guide.github.io/Datalake-Guide/)**
+---
 
-## 🎯 Vision Statement
+## 🌐 Live Knowledge Hub
 
-**Building the definitive, community-driven knowledge ecosystem for modern data lakehouse technologies.** This repository serves as a living, breathing whitepaper that evolves with the data engineering landscape, combining comprehensive technical comparisons, battle-tested code recipes, and AI-powered content curation to empower data engineers worldwide to make informed architectural decisions and implement best practices for Delta Lake and Apache Iceberg.
+Explore the full site at **[analytical-guide.github.io/Datalake-Guide](https://analytical-guide.github.io/Datalake-Guide/)** — searchable documentation, tutorials, and curated resources, automatically kept up to date.
 
-## 📁 Repository Content and Structure
+---
 
-This repository is organized into the following sections:
+## 🎯 What Is This?
+
+Choosing between Delta Lake and Apache Iceberg—or deciding how to deploy either in production—is non-trivial. This hub solves that by providing:
+
+| Need | What You'll Find |
+|------|-----------------|
+| **Understand the differences** | [Feature comparison matrix](docs/comparisons/feature-matrix.md) with 60+ criteria across 10 dimensions |
+| **Get hands-on quickly** | [CI/CD-validated code recipes](code-recipes/) for common workloads |
+| **Move to production** | [Production readiness guide](docs/best-practices/production-readiness.md) with advanced compaction, monitoring, and DR patterns |
+| **Migrate existing systems** | [Step-by-step migration guide](docs/tutorials/migration-guide.md) covering Parquet, Hive, and cross-cloud scenarios |
+| **Stay current** | Weekly automated discovery of new articles and blog posts from trusted sources |
+
+---
+
+## 📁 Repository Structure
+
+```
+Datalake-Guide/
+├── docs/
+│   ├── comparisons/feature-matrix.md   ← Delta vs Iceberg (60+ features)
+│   ├── tutorials/getting-started.md    ← Quickstart for both formats
+│   ├── tutorials/migration-guide.md    ← Parquet → Delta/Iceberg migration
+│   ├── best-practices/production-readiness.md ← Production checklist
+│   ├── architecture/system-overview.md ← Hub automation architecture
+│   └── awesome-list.md                 ← Curated resources (auto-updated)
+├── code-recipes/examples/              ← Runnable, validated code recipes
+├── community/                          ← Contributor stats & processed URLs
+├── scripts/                            ← Automation scripts
+└── .github/workflows/                  ← 8 automated GitHub Actions
+```
 
 ### Core Content
 
 | Section | Location | Description |
 |---------|----------|-------------|
-| **Feature Matrix** | [`docs/comparisons/feature-matrix.md`](docs/comparisons/feature-matrix.md) | Comprehensive comparison of Delta Lake vs Apache Iceberg |
-| **Code Recipes** | [`code-recipes/`](code-recipes/) | Production-ready code examples with validation |
-| **Tutorials** | [`docs/tutorials/`](docs/tutorials/) | Step-by-step guides for common use cases |
-| **Architecture** | [`docs/architecture/`](docs/architecture/) | Reference architectures and design patterns |
-| **Best Practices** | [`docs/best-practices/`](docs/best-practices/) | Industry-tested patterns and recommendations |
-
-### Learning Resources
-
-| Resource | Location | Description |
-|----------|----------|-------------|
-| **Getting Started** | [`docs/tutorials/getting-started.md`](docs/tutorials/getting-started.md) | Quick start guide for beginners |
-| **Migration Guide** | [`docs/tutorials/migration-guide.md`](docs/tutorials/migration-guide.md) | Moving from legacy systems |
-| **Knowledge Quiz** | [`quiz/`](quiz/) | Test your Delta Lake & Iceberg knowledge |
-| **Design System** | [`docs/design-system.md`](docs/design-system.md) | UI/UX guidelines for the project |
+| **Feature Matrix** | [`docs/comparisons/feature-matrix.md`](docs/comparisons/feature-matrix.md) | 60+ feature comparison across 10 dimensions |
+| **Code Recipes** | [`code-recipes/`](code-recipes/) | CI-validated, production-ready examples |
+| **Getting Started** | [`docs/tutorials/getting-started.md`](docs/tutorials/getting-started.md) | Hands-on quickstart for both technologies |
+| **Migration Guide** | [`docs/tutorials/migration-guide.md`](docs/tutorials/migration-guide.md) | Parquet, Hive → Delta/Iceberg with validation scripts |
+| **Production Readiness** | [`docs/best-practices/production-readiness.md`](docs/best-practices/production-readiness.md) | Advanced patterns for production deployments |
+| **Architecture** | [`docs/architecture/system-overview.md`](docs/architecture/system-overview.md) | Hub automation and workflow architecture |
+| **Awesome List** | [`docs/awesome-list.md`](docs/awesome-list.md) | Curated resources, updated weekly by AI aggregator |
+| **Knowledge Quiz** | [`quiz.md`](quiz.md) | Test and track your knowledge |
 
 ## 📚 Quick Links
 
-- [🔍 **Feature Comparison Matrix**](docs/comparisons/feature-matrix.md) - Detailed side-by-side comparison of Delta Lake vs Apache Iceberg
-- [👨‍💻 **Code Recipes**](code-recipes/) - Production-ready code examples with validation
-- [🧠 **Knowledge Quiz**](quiz/) - Test your Delta Lake & Iceberg knowledge
-- [📖 **Tutorials**](docs/tutorials/) - Step-by-step guides for common use cases
-- [🏗️ **Architecture Patterns**](docs/architecture/) - Reference architectures and design patterns
-- [🤝 **Contributing Guide**](CONTRIBUTING.md) - Join our community and contribute
-- [📜 **Code of Conduct**](CODE_OF_CONDUCT.md) - Our community standards
-- [🏆 **Community Leaderboard**](#-community-leaderboard) - Top contributors
+- [🔍 **Feature Comparison Matrix**](docs/comparisons/feature-matrix.md) — 60+ criteria, benchmarks, and decision framework
+- [👨‍💻 **Code Recipes**](code-recipes/) — Production-ready examples with CI validation
+- [📖 **Getting Started**](docs/tutorials/getting-started.md) — First Delta/Iceberg table in minutes
+- [🚀 **Migration Guide**](docs/tutorials/migration-guide.md) — Parquet/Hive → modern format
+- [🏗️ **Production Readiness**](docs/best-practices/production-readiness.md) — Best practices for production
+- [🤝 **Contributing Guide**](CONTRIBUTING.md) — Earn points, join the community
+- [📜 **Code of Conduct**](CODE_OF_CONDUCT.md) — Community standards
+- [🏆 **Community Leaderboard**](#-community-leaderboard) — Top contributors
 
 ## 💡 The "Living Whitepaper" Philosophy
 
-Unlike traditional static documentation, this repository is designed as a **living knowledge base** that continuously evolves:
+Unlike traditional static documentation, this repository is designed as a **living knowledge base** that continuously evolves through automation:
 
-- **🤖 Automated Freshness**: GitHub Actions workflows automatically detect stale content and create issues to keep documentation current
-- **✅ Validated Content**: Every code recipe is automatically tested in CI/CD to ensure it works with the latest versions
-- **🔗 Link Health**: Automated link checking prevents documentation rot
-- **📊 Community-Driven**: Contributions are gamified with a points system, encouraging diverse perspectives
-- **🧠 AI-Enhanced**: Machine learning assists in discovering, summarizing, and curating relevant content from across the web
-- **🎨 Diagrams as Code**: All architecture diagrams use Mermaid.js for version control and easy collaboration
+| Automation | Trigger | What It Does |
+|-----------|---------|-------------|
+| **Code Recipe CI** | Every PR | Lints Python, runs `validate.sh` per recipe |
+| **Documentation CI** | Every PR | Markdownlint, link checker, Mermaid diagram validation |
+| **Stale Content Bot** | Weekly (Mon) | Opens issues for docs untouched > 12 months |
+| **Resource Aggregator** | Weekly (Sun) | Discovers new articles from RSS feeds, commits to awesome list |
+| **Leaderboard Update** | Daily | Regenerates top-10 contributor table in README |
+| **Gamification Engine** | PR/Review/Issue | Awards points and updates contributor stats |
+| **Quiz Leaderboard** | Issue comment | Updates quiz scores in the leaderboard issue |
+
+All architecture diagrams use **Mermaid.js** so every diagram is version-controlled and diffable alongside the content it describes.
 
 ## 🛠️ Tech Stack
 
-This knowledge hub leverages cutting-edge technologies:
-
-- **📊 Data Formats**: Delta Lake, Apache Iceberg
-- **💻 Languages**: Python, SQL, Scala
-- **🔄 Orchestration**: GitHub Actions, Python automation scripts
-- **📝 Documentation**: Markdown, Mermaid.js
-- **🧪 Testing**: pytest, shell scripts
-- **🎨 Code Quality**: black, flake8, markdownlint
-- **🔍 Content Discovery**: BeautifulSoup, feedparser, LLM APIs
-
-## 🎯 What You'll Find Here
-
-### 📊 Comprehensive Comparisons
-
-Our [feature comparison matrix](docs/comparisons/feature-matrix.md) provides an unbiased, detailed analysis of:
-- Time Travel and Version Control
-- Schema Evolution Strategies
-- Partitioning and Clustering
-- Compaction and Optimization
-- Concurrency Control Mechanisms
-- Query Performance Characteristics
-- Ecosystem Integration
-
-### 💻 Battle-Tested Code Recipes
-
-Every recipe in our [code-recipes](code-recipes/) directory follows a standardized structure:
-- **Problem Definition**: Clear use case description
-- **Solution**: Fully commented, production-ready code
-- **Dependencies**: Reproducible environment specifications
-- **Validation**: Automated tests to verify functionality
-
-### 🎓 Learning Resources
-
-- **Tutorials**: Hands-on guides for common scenarios
-- **Best Practices**: Industry-tested patterns and anti-patterns
-- **Architecture Guides**: Reference implementations for various scales
+| Layer | Technologies |
+|-------|-------------|
+| **Data Formats** | Delta Lake 3.x, Apache Iceberg 1.5+ |
+| **Languages** | Python 3.8+, SQL, Scala |
+| **Automation** | GitHub Actions (8 workflows) |
+| **Documentation** | Markdown, Mermaid.js, Jekyll |
+| **Code Quality** | black, flake8, markdownlint, typos |
+| **Link Health** | lychee link checker |
+| **Content Discovery** | feedparser, BeautifulSoup, optional LLM APIs |
 
 ## 🚀 How to Use This Material
 
-1. **Start with the Feature Comparison**: Begin by reading the [Feature Comparison Matrix](docs/comparisons/feature-matrix.md) for a comprehensive overview of Delta Lake vs Apache Iceberg.
+### 👩‍🎓 For Learners
 
-2. **Explore the Getting Started Guide**: Use the [Getting Started Tutorial](docs/tutorials/getting-started.md) to set up your first lakehouse.
+| Step | Goal | Resource |
+|------|------|----------|
+| 1 | Compare technologies | [Feature Matrix](docs/comparisons/feature-matrix.md) |
+| 2 | Set up your environment | [Getting Started Tutorial](docs/tutorials/getting-started.md) |
+| 3 | Try runnable examples | [Code Recipes](code-recipes/examples/) |
+| 4 | Move to production | [Production Readiness Guide](docs/best-practices/production-readiness.md) |
+| 5 | Migrate existing systems | [Migration Guide](docs/tutorials/migration-guide.md) |
+| 6 | Test your knowledge | [Knowledge Quiz](quiz.md) |
 
-3. **Review Code Recipes**: Work through the [Code Recipes](code-recipes/) for hands-on implementation examples.
+### 👩‍💻 For Contributors
 
-4. **Follow Best Practices**: Study the [Best Practices](docs/best-practices/) for production-ready implementations.
-
-5. **Test Your Knowledge**: Take the [Knowledge Quiz](quiz/) to validate your understanding.
-
-6. **Visit the Website**: Explore the full content at [GitHub Pages](https://analytical-guide.github.io/Datalake-Guide/).
-
-## 🚀 Getting Started
-
-### For Learners
-
-1. Browse the [feature comparison matrix](docs/comparisons/feature-matrix.md) to understand the differences
-2. Explore [code recipes](code-recipes/) for your specific use case
-3. Follow [tutorials](docs/tutorials/) for step-by-step implementations
-
-### For Contributors
-
-1. Read our [Contributing Guide](CONTRIBUTING.md)
+1. Read our [Contributing Guide](CONTRIBUTING.md) — contributions earn points on the leaderboard
 2. Check [open issues](https://github.com/Analytical-Guide/Datalake-Guide/issues) for areas needing help
 3. Review the [Code of Conduct](CODE_OF_CONDUCT.md)
-4. Submit your first pull request!
+4. Submit your first pull request — the gamification engine awards points automatically!
 
 ## 🛠️ Development & Deployment
 
@@ -330,6 +323,23 @@ Monitor performance using:
 - **Lighthouse**: Browser dev tools
 - **WebPageTest**: External performance testing
 - **GitHub Actions**: Automated performance checks
+
+## 🏆 Community Leaderboard
+
+<!-- LEADERBOARD_START -->
+### 🏆 Top Contributors
+
+Thank you to our amazing community members who make this knowledge hub possible!
+
+| Rank | Contributor | Points | PRs | Reviews | Issues |
+|------|-------------|--------|-----|---------|--------|
+| 🥇 #1 | [@Copilot](https://github.com/Copilot) | **50** | 1 | 0 | 0 |
+| 🥈 #2 | [@moshesham](https://github.com/moshesham) | **13** | 1 | 0 | 1 |
+
+*Last updated: 2026-04-27 19:34 UTC*
+
+**Want to see your name here?** Check out our [Contributing Guide](CONTRIBUTING.md) to get started!
+<!-- LEADERBOARD_END -->
 
 ## 📈 Repository Stats
 

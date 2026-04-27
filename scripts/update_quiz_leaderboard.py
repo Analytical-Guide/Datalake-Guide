@@ -13,6 +13,7 @@ from collections import defaultdict
 
 START_MARKER = "<!-- QUIZ_LEADERBOARD_START -->"
 END_MARKER = "<!-- QUIZ_LEADERBOARD_END -->"
+QUIZ_LABEL = "quiz-leaderboard"
 
 def parse_score_from_comment(comment):
     """Parse quiz score from a comment object."""
@@ -75,6 +76,18 @@ def generate_leaderboard_markdown(scores):
     )
     return section
 
+
+def resolve_issue_number(repo, configured_issue_number):
+    """Resolve issue number from input or by finding quiz-leaderboard issue."""
+    if configured_issue_number:
+        return int(configured_issue_number)
+
+    for issue in repo.get_issues(state="open"):
+        if any(label.name == QUIZ_LABEL for label in issue.labels):
+            return issue.number
+
+    return None
+
 def update_leaderboard_issue():
     """Main function to update the leaderboard issue."""
     # Get environment variables
@@ -86,17 +99,18 @@ def update_leaderboard_issue():
         print("❌ GITHUB_TOKEN not found")
         sys.exit(1)
 
-    if not issue_number:
-        print("❌ ISSUE_NUMBER not found")
-        sys.exit(1)
-
     try:
         # Initialize GitHub client
         g = Github(token)
         repo = g.get_repo(repo_name)
-        issue = repo.get_issue(int(issue_number))
+        resolved_issue_number = resolve_issue_number(repo, issue_number)
+        if not resolved_issue_number:
+            print(f"ℹ️  No open issue labeled '{QUIZ_LABEL}' found, skipping update")
+            return
 
-        print(f"📊 Updating leaderboard for issue #{issue_number}")
+        issue = repo.get_issue(resolved_issue_number)
+
+        print(f"📊 Updating leaderboard for issue #{resolved_issue_number}")
 
         # Get leaderboard data
         scores = get_leaderboard_data(issue)

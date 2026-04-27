@@ -341,5 +341,4 @@ spark.sql("""
 ---
 
 **Last Updated**: 2025-11-14
-**Maintainers**: Community</content>
-<parameter name="filePath">c:\Users\Moshe\Analytical_Guide\Datalake-Guide\docs\tutorials\migration-guide.md
+**Maintainers**: Community
