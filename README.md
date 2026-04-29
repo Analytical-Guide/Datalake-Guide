@@ -333,10 +333,10 @@ Thank you to our amazing community members who make this knowledge hub possible!
 
 | Rank | Contributor | Points | PRs | Reviews | Issues |
 |------|-------------|--------|-----|---------|--------|
-| 🥇 #1 | [@Copilot](https://github.com/Copilot) | **50** | 1 | 0 | 0 |
+| 🥇 #1 | [@Copilot](https://github.com/Copilot) | **75** | 2 | 0 | 0 |
 | 🥈 #2 | [@moshesham](https://github.com/moshesham) | **13** | 1 | 0 | 1 |
 
-*Last updated: 2026-04-27 19:34 UTC*
+*Last updated: 2026-04-29 13:29 UTC*
 
 **Want to see your name here?** Check out our [Contributing Guide](CONTRIBUTING.md) to get started!
 <!-- LEADERBOARD_END -->
