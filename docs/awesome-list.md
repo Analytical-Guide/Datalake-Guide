@@ -24,6 +24,14 @@ A curated list of articles, blog posts, videos, and resources about Delta Lake a
 
 ## Recent Articles
 
+### [Delta Lake 4.1.0 Released](https://delta.io/blog/2026-03-01-delta-lake-4-1-0-released)
+
+*Discovered: 2026-05-03*
+
+New article about Delta Lake and Apache Iceberg.
+
+---
+
 *This section is automatically updated by our resource aggregator bot. New articles are added weekly and reviewed by the community.*
 
 ### [Delta Lake 3.2: Liquid Clustering and Improved Performance](https://delta.io/blog/delta-lake-3-2/)
